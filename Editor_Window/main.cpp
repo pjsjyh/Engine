@@ -3,9 +3,11 @@
 
 #include "framework.h"
 #include "Editor_Window.h"
+#include "..\\SO_SOURCE\soApplication.h"
 
+#pragma comment(lib,"..\\x64\\Debug\\SOEngine_Window.lib")
 #define MAX_LOADSTRING 100
-
+Application app;
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -41,16 +43,38 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_EDITORWINDOW));
 
     MSG msg;
-
+    //GetMessage
+    // 프로세스에서 발생한 메세지를 메세지 큐에서 가져오는 함수
+    // 메세지큐에 아무것도 없으면 아무 메세지도 가져오지 않는다.
+    // 
+    // PeekMessage : 메세지큐에 메세지 유무에 상관없이 함수가 리턴된다.
+    //               리턴 값이 true인 경우 메세지가 있고 false인 경우는 메세지가 없다라고 가르켜준다.
+    // 
+    // 
+    while (true) {
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
+            if (msg.message == WM_QUIT)
+                break;
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else {
+            //메세지가 없을 경우 여기서 처리
+            //게임 로직이 들어가면 된다.
+        }
+    }
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+ /*   while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
-    }
+    }*/
 
     return (int) msg.wParam;
 }
@@ -121,6 +145,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
 //
 //
+//메세지 함수 처리 함수
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)
@@ -146,6 +171,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+            //DC란 화면에 출력에 필요한 모든 정보를 가지는 데이터 구조체이며
+            // //gui모듈에 의해서 관리된다.
+            // 어떤 폰트를 사용할건가? 어떤 선의 굵기를 정해줄건가...
+            // 화면출력에 필요한 모든 경우는 WINAPI에서는 DC를 통해서 작업을 진행할 수 있다.
+            // 
+            HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
+            HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
+            Rectangle(hdc, 100, 100, 200, 200);
+            (HBRUSH)SelectObject(hdc, oldBrush);
+            Ellipse(hdc, 200, 200, 300, 300);
+            DeleteObject(brush);
+
+            //기본적으로 자주사용되는 GDI오브젝트를 미리 DC안에 만들어두었는데
+            //그 오브젝트들을 스톡 오브젝트라고 한다.
+
+
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }
