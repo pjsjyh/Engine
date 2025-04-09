@@ -5,9 +5,9 @@
 #include "Editor_Window.h"
 #include "..\\SO_SOURCE\soApplication.h"
 
-#pragma comment(lib,"..\\x64\\Debug\\SOEngine_Window.lib")
+//#pragma comment(lib,"..\\x64\\Debug\\SOEngine_Window.lib")
 #define MAX_LOADSTRING 100
-Application app;
+so::Application app;
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -64,6 +64,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         else {
             //메세지가 없을 경우 여기서 처리
             //게임 로직이 들어가면 된다.
+            app.Run();
         }
     }
     // 기본 메시지 루프입니다:
@@ -123,7 +124,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
-
+   app.Initialize(hWnd);
    if (!hWnd)
    {
       return FALSE;
@@ -176,12 +177,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 어떤 폰트를 사용할건가? 어떤 선의 굵기를 정해줄건가...
             // 화면출력에 필요한 모든 경우는 WINAPI에서는 DC를 통해서 작업을 진행할 수 있다.
             // 
-            HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
+           /* HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
             HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
             Rectangle(hdc, 100, 100, 200, 200);
             (HBRUSH)SelectObject(hdc, oldBrush);
             Ellipse(hdc, 200, 200, 300, 300);
-            DeleteObject(brush);
+            DeleteObject(brush);*/
 
             //기본적으로 자주사용되는 GDI오브젝트를 미리 DC안에 만들어두었는데
             //그 오브젝트들을 스톡 오브젝트라고 한다.
