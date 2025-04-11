@@ -1,5 +1,5 @@
 #include "soApplication.h"
-
+#include "Input.h"
 namespace so {
 	Application::Application()
 		:mHwnd(nullptr),
@@ -15,10 +15,11 @@ namespace so {
 		mHdc = GetDC(hwnd);
 
 		mPlayer.SetPosition(0, 0);
+		Input::Initialize();
 	}
 	void Application::Update() {
 
-		mSpeed += 0.01f;
+		Input::Update();
 
 		mPlayer.Update();
 	}
