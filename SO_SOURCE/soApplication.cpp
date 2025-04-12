@@ -33,7 +33,7 @@ namespace so {
 		mBackBitmap = CreateCompatibleBitmap(mHdc, width, height);
 
 		mBackHdc = CreateCompatibleDC(mHdc);
-		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBuffer);
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(mBackHdc, mBackBitmap);
 		DeleteObject(oldBitmap);
 
 		mPlayer.SetPosition(0, 0);
