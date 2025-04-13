@@ -13,6 +13,13 @@ namespace so {
 		void LateUpdate();
 		void Run();
 		void Render();
+
+	private:
+		void clearRenderTarget();
+		void copyRenderTarget(HDC source, HDC dest);
+		void adjustWindowRect(HWND hwnd, UINT width, UINT height);
+		void createBuffer(UINT width, UINT height);
+		void initializeEtc();
 	private:
 		HWND mHwnd;
 		HDC mHdc;
@@ -25,7 +32,9 @@ namespace so {
 
 		float mSpeed;
 		float mX, mY;
-		GameObject mPlayer;
+		//GameObject mPlayer;
+
+		//std::vector<GameObject*> mGameObjects;
 	};
 }
 

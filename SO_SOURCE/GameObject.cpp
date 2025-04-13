@@ -2,6 +2,8 @@
 #include "Input.h"
 #include "Time.h"
 so::GameObject::GameObject()
+	:mX(0)
+	,mY(0)
 {
 }
 
@@ -17,6 +19,7 @@ void so::GameObject::SetPosition(float x, float y)
 
 void so::GameObject::Update()
 {
+
 	const int speed = 100.0f;
 	if (Input::GetKey(eKeyCode::A)) {
 		mX -= speed*Time::DeltaTime();
@@ -42,12 +45,17 @@ void so::GameObject::Render(HDC hdc)
 	float y = mY;
 
 
-	HBRUSH brush = CreateSolidBrush(RGB(0, 0, 255));
+	HBRUSH brush = CreateSolidBrush(RGB(rand()%255, rand() % 255, rand() % 255));
 	HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
-	Rectangle(hdc, 100 + x, 100 + y, 200 + x, 200 + y);
+	HPEN redPen = CreatePen(PS_SOLID, 2, RGB(rand() % 255, rand() % 255, rand() % 255));
+	HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
+	SelectObject(hdc, oldPen);
+	Ellipse(hdc, x,  y, 100 + x, 100 + y);
+
 	(HBRUSH)SelectObject(hdc, oldBrush);
 	Ellipse(hdc, 200, 200, 300, 300);
 	DeleteObject(brush);
-	Rectangle(hdc, 500, 500, 600, 600);
+	DeleteObject(redPen);
+	//Rectangle(hdc, 500, 500, 600, 600);
 }
 

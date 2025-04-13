@@ -10,7 +10,7 @@ namespace so {
 	{
 		//cpu 고유 진동수
 		QueryPerformanceFrequency(&CpuFrequency);
-//프로그램이 시작 했을 떄 현재 진동수
+		//프로그램이 시작 했을 떄 현재 진동수
 		QueryPerformanceCounter(&PrevCpuFrequency);
 	}
 
@@ -18,7 +18,8 @@ namespace so {
 	{
 		QueryPerformanceCounter(&CurrentCpuFrequency);
 
-		float differenceFrequency = static_cast<float>(CurrentCpuFrequency.QuadPart - PrevCpuFrequency.QuadPart);
+		float differenceFrequency 
+			= static_cast<float>(CurrentCpuFrequency.QuadPart - PrevCpuFrequency.QuadPart);
 
 		mDeltaTime = differenceFrequency / static_cast<float>(CpuFrequency.QuadPart);
 

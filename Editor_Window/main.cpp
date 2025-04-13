@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "Editor_Window.h"
 #include "..\\SO_SOURCE\soApplication.h"
+#include "..\\SOEngine_Window\\LoadScene.h"
 
 //#pragma comment(lib,"..\\x64\\Debug\\SOEngine_Window.lib")
 #define MAX_LOADSTRING 100
@@ -135,6 +136,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
+
+   //load Scene
+   so::LoadScene();
    return TRUE;
 }
 

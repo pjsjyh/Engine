@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CommonInclude.h"
+#include "Component.h"
 namespace so {
 	class GameObject
 	{
@@ -15,6 +16,7 @@ namespace so {
 		void Update();
 		void LateUpdate();
 		void Render(HDC hdc);
+
 	private:
 		float mX;
 		float mY;
