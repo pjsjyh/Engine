@@ -16,11 +16,11 @@ void so::ShootingScene::Initialize()
 
 void so::ShootingScene::Update()
 {
-	if (Input::GetKeyDown(eKeyCode::A)) {
-		Shooting* obj = new Shooting(700, 800);
-		Scene::AddShootingObject(obj);
+	//if (Input::GetKeyDown(eKeyCode::A)) {
+	//	Shooting* obj = new Shooting(700, 800);
+	//	Scene::AddShootingObject(obj);
 
-	}
+	//}
 	Scene::Update();
 }
 

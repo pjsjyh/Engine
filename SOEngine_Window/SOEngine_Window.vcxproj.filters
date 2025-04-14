@@ -14,6 +14,9 @@
     </ClInclude>
     <ClInclude Include="ShootingScene.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="TitleScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlayScene.cpp">
@@ -21,5 +24,8 @@
     </ClCompile>
     <ClCompile Include="ShootingScene.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

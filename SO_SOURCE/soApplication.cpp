@@ -38,6 +38,7 @@ namespace so {
 	}
 	void Application::LateUpdate()
 	{
+		SceneManager::LateUpdate();
 	}
 	void Application::Run()
 	{

@@ -2,8 +2,13 @@
 
 namespace so {
 	so::Scene::Scene()
-		:mGameObjects{}
+		:mLayers{}
 	{
+		mLayers.resize((UINT)eLayerType::Max);
+		for (size_t i = 0; i < (UINT)eLayerType::Max; i++)
+		{
+			mLayers[i] = new Layer();
+		}
 	}
 
 	so::Scene::~Scene()
@@ -11,45 +16,50 @@ namespace so {
 	}
 	void Scene::Initialize()
 	{
+		for (Layer* layer : mLayers) {
+			if (layer == nullptr) continue;
+			layer->Initialize();
+		}
 	}
 	void Scene::Update()
 	{
-		for (GameObject* gameObj : mGameObjects) {
-			gameObj->Update();
+		for (Layer* layer : mLayers) {
+			if (layer == nullptr) continue;
+
+			layer->Update();
 		}
-		for (Shooting* gameObj : mShootingObj) {
-			gameObj->Update();
-		}
+
 	}
 	void Scene::LateUpdate()
 	{
-		for (GameObject* gameObj : mGameObjects) {
-			gameObj->LateUpdate();
+		for (Layer* layer : mLayers) {
+			if (layer == nullptr) continue;
+
+			layer->LateUpdate();
 		}
-		for (Shooting* gameObj : mShootingObj) {
-			gameObj->LateUpdate();
-		}
+
 	}
 	void Scene::Render(HDC hdc)
 	{
-		for (GameObject* gameObj : mGameObjects) {
-			gameObj->Render(hdc);
-		}
-		for (Shooting* gameObj : mShootingObj) {
-			gameObj->Render(hdc);
-		}
-	}
-	 void Scene::AddGameObject(GameObject* gameObject)
-	{
-		mGameObjects.push_back(gameObject);
-	}
-	 void Scene::AddShootingObject(Shooting* gameObject)
-	 {
-		 mShootingObj.push_back(gameObject);
-	 }
-	 void Scene::StartShoot(Shooting* shootObj)
-	 {
+		for (Layer* layer : mLayers) {
+			if (layer == nullptr) continue;
 
-	 }
+			layer->Render(hdc);
+		}
+
+	}
+	void Scene::OnEnter()
+	{
+	}
+	void Scene::OnExit()
+	{
+	}
+
+	void Scene::AddGameObject(GameObject* gameObj, const eLayerType type)
+	{
+		mLayers[(UINT)type]->AddGameObject(gameObj);
+	}
+
+
 }
 

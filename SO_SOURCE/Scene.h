@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 #include "Shooting.h"
+#include "Layer.h"
 namespace so {
 	class Scene:public Entity
 	{
@@ -15,13 +16,13 @@ namespace so {
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void AddGameObject(GameObject* gameObject);
-		void AddShootingObject(Shooting* gameObject);
+		virtual void OnEnter();
+		virtual void OnExit();
 
-		 void StartShoot(Shooting* shootObj);
+		void AddGameObject(GameObject* gameObj, const eLayerType type);
 	private:
-		std::vector<GameObject*> mGameObjects;
-		std::vector<Shooting*> mShootingObj;
+
+		std::vector<Layer*> mLayers;
 	};
 }
 

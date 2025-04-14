@@ -14,6 +14,9 @@ namespace so {
 		}
 
 		static Scene* LoadScene(const std::wstring& name) {
+			if (mActiveScene) mActiveScene->OnExit();
+			
+		
 			std::map<const std::wstring, Scene*>::iterator iter = mScene.find(name);
 
 			if (iter == mScene.end()) {
@@ -21,7 +24,7 @@ namespace so {
 			}
 
 			mActiveScene = iter->second;
-
+			mActiveScene->OnEnter();
 			return iter->second;
 		}
 
