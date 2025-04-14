@@ -20,3 +20,7 @@ namespace so {
 	};
 }
 
+class Component
+{
+};
+

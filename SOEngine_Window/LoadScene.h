@@ -12,9 +12,9 @@
 namespace so {
 	void LoadScene()
 	{
-		//SceneManager::CreateScene<PlayScene>(L"PlayScene");
-		SceneManager::CreateScene<ShootingScene>(L"ShootingScene");
+		SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		//SceneManager::CreateScene<ShootingScene>(L"ShootingScene");
 
-		SceneManager::LoadScene(L"ShootingScene");
+		SceneManager::LoadScene(L"PlayScene");
 	};
 }

@@ -13,11 +13,13 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="ShootingScene.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlayScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="ShootingScene.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
 </Project>
