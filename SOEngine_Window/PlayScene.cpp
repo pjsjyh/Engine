@@ -2,83 +2,46 @@
 #include "Player.h"
 #include "Transform.h"
 #include "SpriteRenderer.h"
+#include "GameObject.h"
 namespace so {
 
-	so::PlayScene::PlayScene()
+	PlayScene::PlayScene()
 	{
 	}
-
-	so::PlayScene::~PlayScene()
+	PlayScene::~PlayScene()
 	{
 	}
-
-	void so::PlayScene::Initialize()
+	void PlayScene::Initialize()
 	{
-		/*for (size_t i = 0; i < 100; i++)
 		{
-			GameObject* obj = new GameObject();
-			obj->SetPosition(rand() % 1600, rand() % 900);
-			AddGameObject(obj);
-		}*/
-		{
-			Player* pl = new Player();
+			Player* bg = new Player();
 			Transform* tr
-				= pl->AddComponent<Transform>();
-			tr->SetPos(800, 450);
+				= bg->AddComponent<Transform>();
+			tr->SetPos(Vector2(0, 0));
 
 			tr->SetName(L"TR");
 
 			SpriteRenderer* sr
-				= pl->AddComponent<SpriteRenderer>();
+				= bg->AddComponent<SpriteRenderer>();
 			sr->SetName(L"SR");
+			sr->ImageLoad(L"E:/study/c++study/SoEngine/Engine/Resources/CloudOcean.png");
 
-			AddGameObject(pl);
-		}
 
-		{
-			Player* pl = new Player();
-			Transform* tr
-				= pl->AddComponent<Transform>();
-			tr->SetPos(300, 450);
 
-			tr->SetName(L"TR");
-
-			SpriteRenderer* sr
-				= pl->AddComponent<SpriteRenderer>();
-			sr->SetName(L"SR");
-
-			AddGameObject(pl);
-		}
-
-		{
-			Player* pl = new Player();
-			Transform* tr
-				= pl->AddComponent<Transform>();
-			tr->SetPos(100, 650);
-
-			tr->SetName(L"TR");
-
-			SpriteRenderer* sr
-				= pl->AddComponent<SpriteRenderer>();
-			sr->SetName(L"SR");
-
-			AddGameObject(pl);
+			AddGameObject(bg);
 		}
 	}
 
-	void so::PlayScene::Update()
+	void PlayScene::Update()
 	{
 		Scene::Update();
 	}
-
-	void so::PlayScene::LateUpdate()
+	void PlayScene::LateUpdate()
 	{
 		Scene::LateUpdate();
 	}
-
-	void so::PlayScene::Render(HDC hdc)
+	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-
 	}
 }

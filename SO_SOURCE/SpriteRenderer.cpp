@@ -1,11 +1,14 @@
-#pragma
+ï»¿#pragma
 #include "SpriteRenderer.h"
-#include "Entity.h"
-#include "Component.h"
+#include "Transform.h"
+#include "GameObject.h"
 
 namespace so
 {
 	SpriteRenderer::SpriteRenderer()
+		: mImgae(nullptr)
+		, mWidth(0)
+		, mHeight(0)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -13,6 +16,8 @@ namespace so
 	}
 	void SpriteRenderer::Initialize()
 	{
+
+
 	}
 	void SpriteRenderer::Update()
 	{
@@ -23,23 +28,25 @@ namespace so
 
 	void SpriteRenderer::Render(HDC hdc)
 	{
-		//ÆÄ¶û ºê·¯½¬ »ý¼º
-		HBRUSH blueBrush
-			= CreateSolidBrush(RGB(255, 0, 255));
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
 
-		// ÆÄ¶û ºê·¯½¬ DC¿¡ ¼±ÅÃ ±×¸®°í Èò»ö ºê·¯½¬ ¹ÝÈ¯°ª ¹ÝÈ¯
-		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, blueBrush);
+		Gdiplus::Graphics graphcis(hdc);
+		graphcis.DrawImage(mImgae, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
+	}
+	void SpriteRenderer::ImageLoad(const std::wstring& path)
+	{
+		mImgae = Gdiplus::Image::FromFile(path.c_str());
 
-		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(rand() % 255, rand() % 255, rand() % 255));
-		HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
-		SelectObject(hdc, oldPen);
+		Gdiplus::Status result = mImgae->GetLastStatus();
+		if (result != Gdiplus::Ok)
+		{
+			wchar_t buffer[256];
+			swprintf_s(buffer, 256, L"[âŒ] ì´ë¯¸ì§€ ë¡œë”© ì‹¤íŒ¨. ìƒíƒœ ì½”ë“œ: %d\n", (int)result);
+			OutputDebugStringW(buffer);  // ë””ë²„ê·¸ ì¶œë ¥ì°½ì— ë©”ì‹œì§€ í‘œì‹œ
+		}
 
-		//Transform* tr = GetOwner()->GetComponent<Transform>();
-		/*Rectangle(hdc, tr->GetX(), tr->GetY()
-			, 100 + tr->GetX(), 100 + tr->GetY());*/
-
-		SelectObject(hdc, oldBrush);
-		DeleteObject(blueBrush);
-		DeleteObject(redPen);
+		mWidth = mImgae->GetWidth();
+		mHeight = mImgae->GetHeight();
 	}
 }

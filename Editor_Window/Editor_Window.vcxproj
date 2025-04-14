@@ -164,6 +164,7 @@
     <ResourceCompile Include="Editor_Window.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="C:\Users\Soyeon Park\Downloads\CloudOcean.png" />
     <Image Include="Editor_Window.ico" />
     <Image Include="small.ico" />
   </ItemGroup>

@@ -9,6 +9,11 @@
 //#pragma comment(lib,"..\\x64\\Debug\\SOEngine_Window.lib")
 #define MAX_LOADSTRING 100
 so::Application app;
+ULONG_PTR gpToken;
+Gdiplus::GdiplusStartupInput gpsi;
+#define MAX_LOADSTRING 100
+
+
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
@@ -77,7 +82,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }*/
-
+    Gdiplus::GdiplusShutdown(gpToken);
     return (int) msg.wParam;
 }
 
@@ -136,7 +141,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
-
+   Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
    //load Scene
    so::LoadScene();
    return TRUE;
