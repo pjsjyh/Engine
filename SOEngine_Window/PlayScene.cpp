@@ -6,6 +6,7 @@
 #include "Input.h"
 #include "TitleScene.h"
 #include "SceneManager.h"
+#include "Object.h"
 namespace so {
 
 	PlayScene::PlayScene()
@@ -17,7 +18,7 @@ namespace so {
 	void PlayScene::Initialize()
 	{
 		{
-			bg = new Player();
+		/*	bg = new Player();
 			Transform* tr
 				= bg->AddComponent<Transform>();
 			tr->SetPos(Vector2(0, 0));
@@ -31,7 +32,12 @@ namespace so {
 
 
 
-			AddGameObject(bg, eLayerType::BackGround);
+			AddGameObject(bg, enums::eLayerType::BackGround);*/
+
+			bg = object::Instantiate<Player>(enums::eLayerType::BackGround, Vector2(100.0f, 100.0f));
+			SpriteRenderer* sr
+				= bg->AddComponent<SpriteRenderer>();
+			sr->ImageLoad(L"E:/study/c++study/SoEngine/Engine/Resources/CloudOcean.png");
 		}
 	}
 
@@ -59,8 +65,8 @@ namespace so {
 	}
 	void PlayScene::OnExit()
 	{
-		Transform* tr
+		/*Transform* tr
 			= bg->GetComponent<Transform>();
-		tr->SetPos(Vector2(0, 0));
+		tr->SetPos(Vector2(0, 0));*/
 	}
 }

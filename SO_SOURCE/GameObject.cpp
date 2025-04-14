@@ -1,9 +1,11 @@
 #include "GameObject.h"
 #include "Input.h"
 #include "Time.h"
+#include "Transform.h"
 namespace so {
 	GameObject::GameObject()
 	{
+		initializeTranform();
 	}
 
 	GameObject::~GameObject()
@@ -48,6 +50,10 @@ namespace so {
 		}
 
 
+	}
+	void GameObject::initializeTranform()
+	{
+		AddComponent<Transform>();
 	}
 }
 	

@@ -19,7 +19,10 @@ namespace so {
 		virtual void OnEnter();
 		virtual void OnExit();
 
-		void AddGameObject(GameObject* gameObj, const eLayerType type);
+		void AddGameObject(GameObject* gameObj, const enums::eLayerType type);
+		Layer* GetLayer(const enums::eLayerType type) { return mLayers[(UINT)type]; }
+	private:
+		void CreateLayers();
 	private:
 
 		std::vector<Layer*> mLayers;

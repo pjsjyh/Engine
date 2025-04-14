@@ -36,7 +36,8 @@ namespace so {
 
 			return component;
 		}
-
+	private:
+		void initializeTranform();
 		
 
 	private:

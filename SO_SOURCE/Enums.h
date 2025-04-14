@@ -1,9 +1,12 @@
 #pragma once
 namespace so {
-	enum class eLayerType {
-		None,
-		BackGround,
-		Player,
-		Max=16,
-	};
+	namespace enums {
+		enum class eLayerType {
+			None,
+			BackGround,
+			Player,
+			Max = 16,
+		};
+	}
+	
 }
