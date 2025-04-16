@@ -2,13 +2,13 @@
 #include "SpriteRenderer.h"
 #include "Transform.h"
 #include "GameObject.h"
-
+#include "Texture.h"
 namespace so
 {
 	SpriteRenderer::SpriteRenderer()
-		: mImgae(nullptr)
-		, mWidth(0)
-		, mHeight(0)
+		: Component()
+		, mTexture(nullptr)
+		, mSize(Vector2::One)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -28,25 +28,24 @@ namespace so
 
 	void SpriteRenderer::Render(HDC hdc)
 	{
+		//택스처 셋팅
+		if (mTexture==nullptr)
+			return;
+		
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-
-		Gdiplus::Graphics graphcis(hdc);
-		graphcis.DrawImage(mImgae, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
-	}
-	void SpriteRenderer::ImageLoad(const std::wstring& path)
-	{
-		mImgae = Gdiplus::Image::FromFile(path.c_str());
-
-		Gdiplus::Status result = mImgae->GetLastStatus();
-		if (result != Gdiplus::Ok)
-		{
-			wchar_t buffer[256];
-			swprintf_s(buffer, 256, L"[❌] 이미지 로딩 실패. 상태 코드: %d\n", (int)result);
-			OutputDebugStringW(buffer);  // 디버그 출력창에 메시지 표시
+		if (mTexture->GetTextureType() == graphcis::Texture::eTextureType::Bmp) {
+			TransparentBlt(hdc, pos.x, pos.y
+				, mTexture->GetWidth() * mSize.x, mTexture->GetHeight() * mSize.y
+				, mTexture->GetHdc(), 0, 0, mTexture->GetWidth(), mTexture->GetHeight()
+				, RGB(255, 0, 255));
 		}
-
-		mWidth = mImgae->GetWidth();
-		mHeight = mImgae->GetHeight();
+		else if (mTexture->GetTextureType() == graphcis::Texture::eTextureType::Png) {
+			Gdiplus::Graphics graphcis(hdc);
+			graphcis.DrawImage(mTexture->GetImage(), Gdiplus::Rect(pos.x, pos.y, mTexture->GetWidth(), mTexture->GetHeight()));
+		}
+		//Gdiplus::Graphics graphcis(hdc);
+		//graphcis.DrawImage(mImgae, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
 	}
+	
 }

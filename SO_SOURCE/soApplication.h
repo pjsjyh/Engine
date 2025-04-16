@@ -13,7 +13,7 @@ namespace so {
 		void LateUpdate();
 		void Run();
 		void Render();
-
+		HDC GetHdc() { return mHdc; }
 	private:
 		void clearRenderTarget();
 		void copyRenderTarget(HDC source, HDC dest);

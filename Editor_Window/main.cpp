@@ -5,6 +5,7 @@
 #include "Editor_Window.h"
 #include "..\\SO_SOURCE\soApplication.h"
 #include "..\\SOEngine_Window\\LoadScene.h"
+#include "..\\SOEngine_Window\\LoadResources.h"
 
 //#pragma comment(lib,"..\\x64\\Debug\\SOEngine_Window.lib")
 #define MAX_LOADSTRING 100
@@ -143,6 +144,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
    //load Scene
+   so::LoadResources();
    so::LoadScene();
    return TRUE;
 }
