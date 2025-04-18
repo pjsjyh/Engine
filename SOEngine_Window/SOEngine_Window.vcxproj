@@ -147,12 +147,14 @@
     <ClInclude Include="LoadResources.h" />
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerScript.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="ShootingScene.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerScript.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="ShootingScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />

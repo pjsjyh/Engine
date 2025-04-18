@@ -1,6 +1,7 @@
 #include "Component.h"
 
-so::Component::Component()
+so::Component::Component(enums::eComponentType type)
+	:mType(type)
 {
 }
 

@@ -3,10 +3,12 @@
 #include "Transform.h"
 #include "GameObject.h"
 #include "Texture.h"
+#include "Renderer.h"
+#include "Camera.h"
 namespace so
 {
 	SpriteRenderer::SpriteRenderer()
-		: Component()
+		: Component(enums::eComponentType::SpriteRenderer)
 		, mTexture(nullptr)
 		, mSize(Vector2::One)
 	{
@@ -34,6 +36,8 @@ namespace so
 		
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
+		pos = renderer::mainCamera->CaluatePosition(pos);
+
 		if (mTexture->GetTextureType() == graphcis::Texture::eTextureType::Bmp) {
 			TransparentBlt(hdc, pos.x, pos.y
 				, mTexture->GetWidth() * mSize.x, mTexture->GetHeight() * mSize.y
@@ -42,7 +46,7 @@ namespace so
 		}
 		else if (mTexture->GetTextureType() == graphcis::Texture::eTextureType::Png) {
 			Gdiplus::Graphics graphcis(hdc);
-			graphcis.DrawImage(mTexture->GetImage(), Gdiplus::Rect(pos.x, pos.y, mTexture->GetWidth(), mTexture->GetHeight()));
+			graphcis.DrawImage(mTexture->GetImage(), Gdiplus::Rect(pos.x, pos.y, mTexture->GetWidth()*mSize.x, mTexture->GetHeight()*mSize.y));
 		}
 		//Gdiplus::Graphics graphcis(hdc);
 		//graphcis.DrawImage(mImgae, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));

@@ -18,6 +18,6 @@ namespace so {
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		//SceneManager::CreateScene<ShootingScene>(L"ShootingScene");
 
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"PlayScene");
 	};
 }

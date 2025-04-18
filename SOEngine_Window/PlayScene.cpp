@@ -3,12 +3,14 @@
 #include "Transform.h"
 #include "SpriteRenderer.h"
 #include "GameObject.h"
-#include "Input.h"
+
 #include "TitleScene.h"
 #include "SceneManager.h"
 #include "Object.h"
-#include "Texture.h"
+#include "Input.h"
 #include "Resources.h"
+#include "PlayerScript.h"
+#include "Renderer.h"
 namespace so {
 
 	PlayScene::PlayScene()
@@ -43,11 +45,32 @@ namespace so {
 			//tex->Load(L"E:/study/c++study/SoEngine/Engine/Resources/CloudOcean.png");
 			//sr->ImageLoad(L"E:/study/c++study/SoEngine/Engine/Resources/CloudOcean.png");
 		}
-		bg = object::Instantiate<Player>(enums::eLayerType::BackGround, Vector2(100.0f, 100.0f));
+
+		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Player, Vector2(344.0f, 442.0f));
+		Camera* cameraComp = camera->AddComponent<Camera>();
+		//camera->AddComponent<PlayerScript>();
+		renderer::mainCamera = cameraComp;
+
+
+
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
 		SpriteRenderer* sr
+			= mPlayer->AddComponent<SpriteRenderer>();
+		sr->SetSize(Vector2(3.0f, 3.0f));
+		mPlayer->AddComponent<PlayerScript>();
+		graphcis::Texture* packMan =  Resources::Find<graphcis::Texture>(L"PackMan");
+		sr->SetTexture(packMan);
+
+
+		GameObject* bg = object::Instantiate<Player>(enums::eLayerType::BackGround/*, Vector2(100.0f, 100.0f)*/);
+		SpriteRenderer* bgSr
 			= bg->AddComponent<SpriteRenderer>();
-		graphcis::Texture* bg =  Resources::Find<graphcis::Texture>(L"BG");
-		sr->SetTexture(bg);
+		bgSr->SetSize(Vector2(3.0f, 3.0f));
+
+		graphcis::Texture* bgTexture = Resources::Find<graphcis::Texture>(L"Map");
+		bgSr->SetTexture(bgTexture);
+
+
 		Scene::Initialize();
 	}
 
@@ -67,8 +90,8 @@ namespace so {
 	{
 		Scene::Render(hdc);
 
-		wchar_t str[50] = L"Play Scene";
-		TextOut(hdc, 0, 0, str, 10);
+		/*wchar_t str[50] = L"Play Scene";
+		TextOut(hdc, 0, 0, str, 10);*/
 	}
 	void PlayScene::OnEnter()
 	{
