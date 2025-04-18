@@ -56,6 +56,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Animator.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Animation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)soApplication.h" />
@@ -122,6 +124,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Animator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Animation.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObject">
@@ -165,6 +169,9 @@
     </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{5ae5707b-a4f7-4fdd-aa00-3b344919b3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Animation">
+      <UniqueIdentifier>{8d4fbd11-3481-4423-a68f-b8a546c6555e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="so::Camera" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwCAAAAAAAAAQAAQAAAIAAAQAAACAAAABAAABAAACA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::GameObject" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAABAAIAQAAAgAAJAAAAAAAAAAAABAAAAIAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Component" Collapsed="true">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAIAIAAAQAAAAAAIBAAAAAAAAEAABBCAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Entity" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAwAQAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Entity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Input" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAAAgAAQAACEAAAAwAIAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Layer" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAQAAIAAAQAAAAAAIAAAAAAAAAAEABAAAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Layer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Resource" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAAAAAAAAAIABAAAAACIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Resource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Resources" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAIAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Resources.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Scene" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAAAAQAAgAAAIAAAQAAQAAAABJAAQAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::SceneManager" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQAAAAIQAAAABAKAAAAAAAAAgAABAAAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\SceneManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Script" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAAAAIAAAAAAAAAAAABAAAAAhAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Script.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Shooting" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAEAAgAAAAAIAgAAAQAAQEgABgAAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Shooting.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Application" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQQAAAQABAABQFAwAAgIQBACAACAAAAABEAAEQAAAI=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\soApplication.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::SpriteRenderer" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQQAAAAAAAAAQBAAAAIIAAAACAAAAAAABAAAAAAIAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\SpriteRenderer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Time" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAAAAAEwABAAAAAAAAAAAAAAEAABAAAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Time.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::Transform" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAACAAAQAAAAAAIAQAAAAAAAAAABAAAAAAAoA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Transform.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="so::graphcis::Texture" Collapsed="true">
+    <Position X="14" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAgAAQAAAAhAAAAAAAABBQABAEAAAAAAIAAEQAAAI=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="so::math::Vector2" Collapsed="true">
+    <Position X="16.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAQAAAAAAAABgAAAAAIA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\soMath.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="so::eKeyState" Collapsed="true">
+    <Position X="20" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAI=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Input.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="so::eKeyCode" Collapsed="true">
+    <Position X="18.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAvv//YQM=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Input.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="so::enums::eLayerType" Collapsed="true">
+    <Position X="16.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAgAAAAAAAAAAAAAAAAAQEAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="so::enums::eResourceType" Collapsed="true">
+    <Position X="18.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAIIAAAAAAAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="so::enums::eComponentType" Collapsed="true">
+    <Position X="16.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAgIAA=</HashCode>
+      <FileName>E:\study\c++study\SoEngine\Engine\SO_SOURCE\Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

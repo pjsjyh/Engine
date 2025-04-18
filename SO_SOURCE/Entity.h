@@ -1,5 +1,8 @@
 #pragma once
 #include "CommonInclude.h"
+
+using namespace so::math;
+
 namespace so {
 	class Entity
 	{
