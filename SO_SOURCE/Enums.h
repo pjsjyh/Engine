@@ -5,6 +5,7 @@ namespace so {
 			None,
 			BackGround,
 			Player,
+			Particle,
 			Max = 16,
 		};
 		enum class  eResourceType {

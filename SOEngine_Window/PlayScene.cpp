@@ -60,24 +60,49 @@ namespace so {
 		sr->SetSize(Vector2(3.0f, 3.0f));*/
 		mPlayer->AddComponent<PlayerScript>();
 
-		graphcis::Texture* packmanTexture =  Resources::Find<graphcis::Texture>(L"Cat");
+		/*graphcis::Texture* packmanTexture =  Resources::Find<graphcis::Texture>(L"MapleEffect");
 		Animator* animator = mPlayer->AddComponent<Animator>();
 		animator->CreateAnimation(L"CatFrontMove", packmanTexture
-			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.5f);
+			, Vector2(0.0f, 0.0f), Vector2(386.0f, 246.0f), Vector2::Zero, 8, 0.1f);
 
-		animator->PlayAnimation(L"CatFrontMove", true);
+		animator->PlayAnimation(L"CatFrontMove", true);*/
 
+		graphcis::Texture* packmanTexture =  Resources::Find<graphcis::Texture>(L"Cat");
+		Animator* animator = mPlayer->AddComponent<Animator>();
+		animator->CreateAnimation(L"DownWalk", packmanTexture
+			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"RightWalk", packmanTexture
+			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"UpWalk", packmanTexture
+			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"LeftWalk", packmanTexture
+			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"SitDown", packmanTexture
+			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		animator->CreateAnimation(L"Grooming", packmanTexture
+			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+
+
+		animator->PlayAnimation(L"SitDown", false);
+		mPlayer->GetComponent<Transform>()->SetPos(Vector2(100.0f, 100.0f));
+		mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		mPlayer->GetComponent<Transform>()->SetRotation(0.0f);
 	/*	sr->SetTexture(packMan);*/
 
 
 		GameObject* bg = object::Instantiate<Player>(enums::eLayerType::BackGround/*, Vector2(100.0f, 100.0f)*/);
 		SpriteRenderer* bgSr
 			= bg->AddComponent<SpriteRenderer>();
-		bgSr->SetSize(Vector2(3.0f, 3.0f));
+		//bgSr->SetSize(Vector2(3.0f, 3.0f));
 
 		graphcis::Texture* bgTexture = Resources::Find<graphcis::Texture>(L"Map");
 		bgSr->SetTexture(bgTexture);
 
+		GameObject* bg2 = object::Instantiate<Player>(enums::eLayerType::Particle/*, Vector2(100.0f, 100.0f)*/);
+		SpriteRenderer* bgSr2
+			= bg2->AddComponent<SpriteRenderer>();
+		graphcis::Texture* bbTexture = Resources::Find<graphcis::Texture>(L"Bubble");
+		bgSr2->SetTexture(bbTexture);
 
 		Scene::Initialize();
 	}
