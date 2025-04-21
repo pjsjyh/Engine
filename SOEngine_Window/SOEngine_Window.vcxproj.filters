@@ -7,6 +7,9 @@
     <Filter Include="Scripts">
       <UniqueIdentifier>{a1350cbd-3217-4bc0-985f-c2acb0d3f60b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Content">
+      <UniqueIdentifier>{eef9ad94-401a-4844-974d-a52294e2fe95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayScene.h">
@@ -16,12 +19,20 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="ShootingScene.h" />
-    <ClInclude Include="Player.h" />
     <ClInclude Include="TitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="LoadResources.h" />
     <ClInclude Include="PlayerScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="Cat.h">
+      <Filter>Content</Filter>
+    </ClInclude>
+    <ClInclude Include="CatScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
   </ItemGroup>
@@ -30,11 +41,19 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="ShootingScene.cpp" />
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="PlayerScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="Cat.cpp">
+      <Filter>Content</Filter>
+    </ClCompile>
+    <ClCompile Include="CatScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

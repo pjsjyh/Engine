@@ -4,6 +4,7 @@ namespace so {
 		enum class eLayerType {
 			None,
 			BackGround,
+			Animal,
 			Player,
 			Particle,
 			Max = 16,

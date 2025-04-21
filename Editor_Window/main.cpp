@@ -1,12 +1,10 @@
 ﻿// Editor_Window.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
-
 #include "framework.h"
 #include "Editor_Window.h"
 #include "..\\SO_SOURCE\soApplication.h"
 #include "..\\SOEngine_Window\\LoadScene.h"
 #include "..\\SOEngine_Window\\LoadResources.h"
-
 //#pragma comment(lib,"..\\x64\\Debug\\SOEngine_Window.lib")
 #define MAX_LOADSTRING 100
 so::Application app;
@@ -146,6 +144,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    //load Scene
    so::LoadResources();
    so::LoadScene();
+
+   int a = 0;
+   srand((unsigned int)(&a));
    return TRUE;
 }
 
