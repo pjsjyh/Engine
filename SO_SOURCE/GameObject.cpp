@@ -15,7 +15,7 @@ namespace so {
 		{
 			if (comp == nullptr) 
 				continue;
-			delete comp;
+			//delete comp;
 			comp = nullptr;
 		}
 	}
