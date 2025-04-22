@@ -4,9 +4,16 @@
 #include "Time.h"
 #include "GameObject.h"
 #include "Animator.h"
+#include "Resources.h"
+#include "PlayerScript.h"
+#include "Renderer.h"
+#include "Animator.h"
+#include <Cat.h>
+#include "CatScript.h"
+#include "Object.h"
 namespace so {
 	PlayerScript::PlayerScript()
-		: mState(PlayerScript::eState::SitDown)
+		: mState(PlayerScript::eState::Idle)
 		, mAnimator(nullptr)
 	{
 	}
@@ -23,14 +30,17 @@ namespace so {
 		}
 		switch (mState)
 		{
-		case PlayerScript::eState::SitDown:
-			sitDown();
+		case PlayerScript::eState::Idle:
+			idle();
 			break;
 		case PlayerScript::eState::Walk:
 			move();
 			break;
 
 		case PlayerScript::eState::Sleep:
+			break;
+		case PlayerScript::eState::GiveWater:
+			giveWater();
 			break;
 		case PlayerScript::eState::Attack:
 			break;
@@ -47,28 +57,45 @@ namespace so {
 	void PlayerScript::Render(HDC hdc)
 	{
 	}
-	void PlayerScript::sitDown()
+	void PlayerScript::AttackEffect()
 	{
-		if (Input::GetKey(eKeyCode::D))
+		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal/*, Vector2(100.0f, 100.0f)*/);
+
+		cat->AddComponent<CatScript>();
+
+		graphcis::Texture* catTex = Resources::Find<graphcis::Texture>(L"Cat");
+		Animator* catAnimator = cat->AddComponent<Animator>();
+		catAnimator->CreateAnimation(L"DownWalk", catTex
+			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"RightWalk", catTex
+			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"UpWalk", catTex
+			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LeftWalk", catTex
+			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"SitDown", catTex
+			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"Grooming", catTex
+			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		catAnimator->CreateAnimation(L"LayDown", catTex
+			, Vector2(0.0f, 192.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+
+
+		catAnimator->PlayAnimation(L"SitDown", false);
+		cat->GetComponent<Transform>()->SetPos(Vector2(100.0f, 100.0f));
+		cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		//mPlayer->GetComponent<Transform>()->SetRotation(0.0f);
+	}
+	void PlayerScript::idle()
+	{
+		if (Input::GetKey(eKeyCode::LButton))
 		{
-			mState = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"RightWalk");
-		}
-		if (Input::GetKey(eKeyCode::A)) {
-			mState = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"LeftWalk");
+			mState = PlayerScript::eState::GiveWater;
+			mAnimator->PlayAnimation(L"FrontGiveWater", false);
 
+			Vector2 mousePos = Input::GetMousePosition();
 		}
-		if (Input::GetKey(eKeyCode::W)) {
-			mState = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"UpWalk");
-
-		}
-		if (Input::GetKey(eKeyCode::S)) {
-			mState = PlayerScript::eState::Walk;
-			mAnimator->PlayAnimation(L"DownWalk");
-
-		}
+		
 	}
 	void PlayerScript::move()
 	{
@@ -97,8 +124,15 @@ namespace so {
 		if (Input::GetKeyUp(eKeyCode::D) || Input::GetKeyUp(eKeyCode::A) 
 			|| Input::GetKeyUp(eKeyCode::W) || Input::GetKeyUp(eKeyCode::S))
 		{
-			mState = PlayerScript::eState::SitDown;
+			mState = PlayerScript::eState::Idle;
 			mAnimator->PlayAnimation(L"SitDown", false);
+		}
+	}
+	void PlayerScript::giveWater()
+	{
+		if (mAnimator->IsComplete()) {
+			mState = eState::Idle;
+			mAnimator->PlayAnimation(L"Idle", false);
 		}
 	}
 }

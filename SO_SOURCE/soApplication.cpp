@@ -2,6 +2,7 @@
 #include "Input.h"
 #include "Time.h"
 #include "SceneManager.h"
+#include "Resources.h"
 namespace so {
 	Application::Application()
 		:mHwnd(nullptr),
@@ -54,6 +55,11 @@ namespace so {
 		SceneManager::Render(mBackHdc);
 		//backbuffer에 있는걸 원본에 복사
 		copyRenderTarget(mBackHdc, mHdc);
+	}
+	void Application::Release()
+	{
+		SceneManager::Release();
+		Resources::Release();
 	}
 	void Application::clearRenderTarget()
 	{

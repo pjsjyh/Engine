@@ -11,7 +11,7 @@ namespace so {
 		virtual ~Entity();
 
 		void SetName(const std::wstring& name) { mName = name; }
-		std::wstring& GetNmae() { return mName; }
+		std::wstring& GetName() { return mName; }
 	private:
 		std::wstring mName;
 	};

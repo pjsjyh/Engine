@@ -56,84 +56,29 @@ namespace so {
 
 
 
-		//mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
-	/*	SpriteRenderer* sr
-			= mPlayer->AddComponent<SpriteRenderer>();
-		sr->SetSize(Vector2(3.0f, 3.0f));*/
-		//mPlayer->AddComponent<PlayerScript>();
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
+		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 
-		/*graphcis::Texture* packmanTexture =  Resources::Find<graphcis::Texture>(L"MapleEffect");
-		Animator* animator = mPlayer->AddComponent<Animator>();
-		animator->CreateAnimation(L"CatFrontMove", packmanTexture
-			, Vector2(0.0f, 0.0f), Vector2(386.0f, 246.0f), Vector2::Zero, 8, 0.1f);
+		graphcis::Texture* playerTex =  Resources::Find<graphcis::Texture>(L"Player");
+		Animator* playAnimator = mPlayer->AddComponent<Animator>();
+		playAnimator->CreateAnimation(L"Idle", playerTex
+			, Vector2(2000.0f, 250.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 1, 0.2f);
+		playAnimator->CreateAnimation(L"FrontGiveWater", playerTex
+			, Vector2(0.0f, 2000.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 12, 0.2f);
 
-		animator->PlayAnimation(L"CatFrontMove", true);*/
+		playAnimator->PlayAnimation(L"Idle", false);
 
-		/*graphcis::Texture* packmanTexture =  Resources::Find<graphcis::Texture>(L"Cat");
-		Animator* animator = mPlayer->AddComponent<Animator>();
-		animator->CreateAnimation(L"DownWalk", packmanTexture
-			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"RightWalk", packmanTexture
-			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"UpWalk", packmanTexture
-			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"LeftWalk", packmanTexture
-			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"SitDown", packmanTexture
-			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		animator->CreateAnimation(L"Grooming", packmanTexture
-			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
+		//전역함수로 넘겨줌. 그래서 주소와 함께 넘겨주는것
+		playAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
 
-
-		animator->PlayAnimation(L"SitDown", false);
 		mPlayer->GetComponent<Transform>()->SetPos(Vector2(100.0f, 100.0f));
-		mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
-		mPlayer->GetComponent<Transform>()->SetRotation(0.0f);*/
-	/*	sr->SetTexture(packMan);*/
-
-
-		GameObject* bg = object::Instantiate<Player>(enums::eLayerType::BackGround/*, Vector2(100.0f, 100.0f)*/);
-		SpriteRenderer* bgSr
-			= bg->AddComponent<SpriteRenderer>();
-		//bgSr->SetSize(Vector2(3.0f, 3.0f));
-
-		graphcis::Texture* bgTexture = Resources::Find<graphcis::Texture>(L"Map");
-		bgSr->SetTexture(bgTexture);
-
-		//GameObject* bg2 = object::Instantiate<Player>(enums::eLayerType::Particle/*, Vector2(100.0f, 100.0f)*/);
-		//SpriteRenderer* bgSr2
-		//	= bg2->AddComponent<SpriteRenderer>();
-		//graphcis::Texture* bbTexture = Resources::Find<graphcis::Texture>(L"Bubble");
-		//bgSr2->SetTexture(bbTexture);
-
-
-		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal/*, Vector2(100.0f, 100.0f)*/);
-
-		cat->AddComponent<CatScript>();
-
-		graphcis::Texture* catTex = Resources::Find<graphcis::Texture>(L"Cat");
-		Animator* catAnimator = cat->AddComponent<Animator>();
-		catAnimator->CreateAnimation(L"DownWalk", catTex
-			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"RightWalk", catTex
-			, Vector2(0.0f, 32.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"UpWalk", catTex
-			, Vector2(0.0f, 64.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"LeftWalk", catTex
-			, Vector2(0.0f, 96.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"SitDown", catTex
-			, Vector2(0.0f, 128.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"Grooming", catTex
-			, Vector2(0.0f, 160.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-		catAnimator->CreateAnimation(L"LayDown", catTex
-			, Vector2(0.0f, 192.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);
-
-
-		catAnimator->PlayAnimation(L"SitDown", false);
-		cat->GetComponent<Transform>()->SetPos(Vector2(100.0f, 100.0f));
-		cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 		//mPlayer->GetComponent<Transform>()->SetRotation(0.0f);
 
+		
+
+
+		
 
 
 

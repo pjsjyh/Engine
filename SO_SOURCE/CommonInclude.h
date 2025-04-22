@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <string>
 #include <map>
+#include <functional>
 
 #include "soMath.h"
 #include <mmsystem.h>
