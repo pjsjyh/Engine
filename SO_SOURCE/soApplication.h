@@ -14,6 +14,7 @@ namespace so {
 		void Run();
 		void Render();
 		void Release();
+		void Destroy();
 
 		HWND GetHwnd() { return mHwnd; }
 		HDC GetHdc() { return mHdc; }

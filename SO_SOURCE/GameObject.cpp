@@ -4,6 +4,7 @@
 #include "Transform.h"
 namespace so {
 	GameObject::GameObject()
+		: mState(eState::Active)
 	{
 		mComponents.resize((UINT)enums::eComponentType::End);
 		initializeTranform();

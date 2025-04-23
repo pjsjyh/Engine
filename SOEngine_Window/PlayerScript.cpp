@@ -60,7 +60,6 @@ namespace so {
 	void PlayerScript::AttackEffect()
 	{
 		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal/*, Vector2(100.0f, 100.0f)*/);
-
 		cat->AddComponent<CatScript>();
 
 		graphcis::Texture* catTex = Resources::Find<graphcis::Texture>(L"Cat");

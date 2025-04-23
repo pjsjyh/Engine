@@ -50,4 +50,9 @@ namespace so {
 ;		}
 	}
 
+	void SceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
+	}
+
 }

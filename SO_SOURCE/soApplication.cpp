@@ -46,6 +46,8 @@ namespace so {
 		Update();
 		LateUpdate();
 		Render();
+
+		Destroy();
 	}
 	void Application::Render()
 	{
@@ -60,6 +62,10 @@ namespace so {
 	{
 		SceneManager::Release();
 		Resources::Release();
+	}
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
 	}
 	void Application::clearRenderTarget()
 	{

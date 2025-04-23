@@ -21,7 +21,7 @@ namespace so {
 		static void LateUpdate();
 		static void Render(HDC hdc);
 		static void Release();
-
+		static void Destroy();
 
 	//	static SceneManager& GetInst() {
 	//		static SceneManager sceneManager;

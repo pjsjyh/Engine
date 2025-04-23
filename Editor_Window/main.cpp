@@ -5,6 +5,7 @@
 #include "..\\SO_SOURCE\soApplication.h"
 #include "..\\SOEngine_Window\\LoadScene.h"
 #include "..\\SOEngine_Window\\LoadResources.h"
+
 //#pragma comment(lib,"..\\x64\\Debug\\SOEngine_Window.lib")
 #define MAX_LOADSTRING 100
 so::Application app;
@@ -82,6 +83,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
             DispatchMessage(&msg);
         }
     }*/
+
+
+
+
     Gdiplus::GdiplusShutdown(gpToken);
     app.Release();
     return (int) msg.wParam;

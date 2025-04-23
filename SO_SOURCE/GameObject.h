@@ -6,6 +6,13 @@ namespace so {
 	class GameObject
 	{
 	public:
+		enum class eState
+		{
+			Active,
+			Paused,
+			Dead,
+			End
+		};
 		GameObject();
 		~GameObject();
 		virtual void Initialize();
@@ -37,12 +44,20 @@ namespace so {
 
 			return component;
 		}
+		eState GetActive() { return mState; }
+		void SetActive(bool power)
+		{
+			if (power == true) mState = eState::Active;
+			if (power == false) mState = eState::Paused;
+		}
+		void Death() { mState = eState::Dead; }
 	private:
 		void initializeTranform();
 		
 
 	private:
 		std::vector<Component*> mComponents;
+		eState mState;
 	};
 }
 

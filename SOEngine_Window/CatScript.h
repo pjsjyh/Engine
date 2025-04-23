@@ -39,6 +39,7 @@ namespace so {
 		eDirection mDirection;
 		class Animator* mAnimator;
 		float mTime;
+		float mDeathTime;
 	};
 
 }
