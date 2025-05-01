@@ -27,7 +27,8 @@ namespace so {
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-
+		void SetPlayer(GameObject* player) { mPlayer = player; }
+		Vector2 mDest;
 	private:
 		void sitDown();
 		void move();
@@ -40,6 +41,9 @@ namespace so {
 		class Animator* mAnimator;
 		float mTime;
 		float mDeathTime;
+
+		GameObject* mPlayer;
+		float mRadian;
 	};
 
 }

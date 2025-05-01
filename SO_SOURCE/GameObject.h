@@ -2,10 +2,15 @@
 
 #include "CommonInclude.h"
 #include "Component.h"
+namespace so::object
+{
+	void Destory(GameObject* gameObject);
+}
 namespace so {
 	class GameObject
 	{
 	public:
+		friend void object::Destory(GameObject* obj);
 		enum class eState
 		{
 			Active,
@@ -50,10 +55,13 @@ namespace so {
 			if (power == true) mState = eState::Active;
 			if (power == false) mState = eState::Paused;
 		}
-		void Death() { mState = eState::Dead; }
+		bool IsActive() { return mState == eState::Active; }
+
+		bool IsDead() { return mState == eState::Dead; }
+		
 	private:
 		void initializeTranform();
-		
+		void death() { mState = eState::Dead; }
 
 	private:
 		std::vector<Component*> mComponents;

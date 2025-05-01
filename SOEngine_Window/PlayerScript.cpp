@@ -94,10 +94,6 @@ namespace so {
 
 			Vector2 mousePos = Input::GetMousePosition();
 		}
-		
-	}
-	void PlayerScript::move()
-	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
 
@@ -119,6 +115,10 @@ namespace so {
 		}
 
 		tr->SetPos(pos);
+	}
+	void PlayerScript::move()
+	{
+		
 
 		if (Input::GetKeyUp(eKeyCode::D) || Input::GetKeyUp(eKeyCode::A) 
 			|| Input::GetKeyUp(eKeyCode::W) || Input::GetKeyUp(eKeyCode::S))

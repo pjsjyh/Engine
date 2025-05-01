@@ -14,6 +14,7 @@
 #include "Animator.h"
 #include "Cat.h"
 #include "CatScript.h"
+#include "BoxCollider2D.h"
 namespace so {
 
 	PlayScene::PlayScene()
@@ -49,14 +50,17 @@ namespace so {
 			//sr->ImageLoad(L"E:/study/c++study/SoEngine/Engine/Resources/CloudOcean.png");
 		}
 
-		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Player, Vector2(344.0f, 442.0f));
+		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(522.0f, 225.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		//camera->AddComponent<PlayerScript>();
 		renderer::mainCamera = cameraComp;
 
-
-		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
+		
+		
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Particle/*, Vector2(100.0f, 100.0f)*/);
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
+		BoxCollider2D* collider =  mPlayer->AddComponent<BoxCollider2D>();
+		collider->SetOffset(Vector2(-50.0f, -50.0f));
 
 		graphcis::Texture* playerTex =  Resources::Find<graphcis::Texture>(L"Player");
 		Animator* playAnimator = mPlayer->AddComponent<Animator>();
@@ -70,7 +74,7 @@ namespace so {
 		//전역함수로 넘겨줌. 그래서 주소와 함께 넘겨주는것
 		playAnimator->GetCompleteEvent(L"FrontGiveWater") = std::bind(&PlayerScript::AttackEffect, plScript);
 
-		mPlayer->GetComponent<Transform>()->SetPos(Vector2(100.0f, 100.0f));
+		mPlayer->GetComponent<Transform>()->SetPos(Vector2(300.0f, 250.0f));
 		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 		//mPlayer->GetComponent<Transform>()->SetRotation(0.0f);
 
@@ -101,14 +105,31 @@ namespace so {
 
 		catAnimator->CreateAnimationByFolder(L"MushroomIdle", L"..\\Resources\\Mushroom", Vector2::Zero, 0.4f);
 
-		catAnimator->PlayAnimation(L"MushroomIdle", true);
+		catAnimator->PlayAnimation(L"MushroomIdle", false);
+		BoxCollider2D* boxCatCollider = cat->AddComponent<BoxCollider2D>();
 
+		boxCatCollider->SetOffset(Vector2(-50.0f, -50.0f));
 		cat->GetComponent<Transform>()->SetPos(Vector2(200.0f, 200.0f));
-		cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		//cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 
 		
 
+		///
+		Player* background = object::Instantiate<Player>(enums::eLayerType::BackGround);
+		SpriteRenderer* sr
+			= background->AddComponent<SpriteRenderer>();
+		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"Background");
+		Transform* tr = background->GetComponent<Transform>();
 
+		bg->SetHeight(209.0f);
+		bg->SetWidth(1032.0f);
+		sr->SetSize(Vector2(2.0f, 2.0f));
+		sr->SetTexture(bg);
+		            
+
+
+
+		///
 
 		Scene::Initialize();
 	}

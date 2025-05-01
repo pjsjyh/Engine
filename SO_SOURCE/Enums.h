@@ -11,16 +11,17 @@ namespace so {
 		};
 		enum class  eResourceType {
 			Texture,
-			AudioClip,
+			AudioClip, 
 			Animation,
 			Prefab,
 			End,
 		};
 		enum class  eComponentType {
 			Transform,
+			Colider,
+			Script,
 			SpriteRenderer,
 			Animator,
-			Script,
 			Camera,
 			End,
 		};

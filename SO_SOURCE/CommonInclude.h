@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <string>
 #include <map>
+#include <bitset>
 #include <functional>
 //FILESYSTEM을 넣으면 CTIME에서 오류발생
 //아직까지 원인불명상태
@@ -27,6 +28,8 @@ extern "C" {
     char* timespec_get(const struct tm*);
 }
 #include <filesystem>
+#include <math.h>
+
 
 #include "soMath.h"
 #include <mmsystem.h>

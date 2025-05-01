@@ -73,6 +73,9 @@ namespace so
 				, nullptr);
 		
 		}
+		else {
+
+		}
 		//Gdiplus::Graphics graphcis(hdc);
 		//graphcis.DrawImage(mImgae, Gdiplus::Rect(pos.x, pos.y, mWidth, mHeight));
 	}

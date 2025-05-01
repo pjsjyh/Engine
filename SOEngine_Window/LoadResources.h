@@ -7,6 +7,9 @@ namespace so {
 		Resources::Load<graphcis::Texture>(L"Cat", L"..\\Resources\\ChickenAlpha.bmp");
 		Resources::Load<graphcis::Texture>(L"Player", L"..\\Resources\\Player.bmp");
 
+		Resources::Load<graphcis::Texture>(L"Background", L"..\\Resources\\Kirby\\Background.png");
+		Resources::Load<graphcis::Texture>(L"Island", L"..\\Resources\\Kirby\\Island.png");
+
 
 		/*Resources::Load<graphcis::Texture>(L"Map", L"E:/study/c++study/SoEngine/Engine/Resources/img/map/map_pure.png");
 		Resources::Load<graphcis::Texture>(L"PackMan", L"E:/study/c++study/SoEngine/Engine/Resources/img/pacman/0.png");
