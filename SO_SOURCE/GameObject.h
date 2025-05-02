@@ -2,6 +2,7 @@
 
 #include "CommonInclude.h"
 #include "Component.h"
+#include "Collider.h"
 namespace so::object
 {
 	void Destory(GameObject* gameObject);

@@ -15,6 +15,8 @@
 #include "Cat.h"
 #include "CatScript.h"
 #include "BoxCollider2D.h"
+#include "CircleCollider2D.h"
+#include "CollisionManager.h"
 namespace so {
 
 	PlayScene::PlayScene()
@@ -50,6 +52,9 @@ namespace so {
 			//sr->ImageLoad(L"E:/study/c++study/SoEngine/Engine/Resources/CloudOcean.png");
 		}
 
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
+
+
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(522.0f, 225.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		//camera->AddComponent<PlayerScript>();
@@ -57,9 +62,10 @@ namespace so {
 
 		
 		
-		mPlayer = object::Instantiate<Player>(enums::eLayerType::Particle/*, Vector2(100.0f, 100.0f)*/);
+		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
-		BoxCollider2D* collider =  mPlayer->AddComponent<BoxCollider2D>();
+		//BoxCollider2D* collider =  mPlayer->AddComponent<BoxCollider2D>();
+		CircleCollider2D* collider = mPlayer->AddComponent<CircleCollider2D>();
 		collider->SetOffset(Vector2(-50.0f, -50.0f));
 
 		graphcis::Texture* playerTex =  Resources::Find<graphcis::Texture>(L"Player");
@@ -107,7 +113,7 @@ namespace so {
 
 		catAnimator->PlayAnimation(L"MushroomIdle", false);
 		BoxCollider2D* boxCatCollider = cat->AddComponent<BoxCollider2D>();
-
+		//CircleCollider2D* boxCatCollider = cat->AddComponent<CircleCollider2D>();
 		boxCatCollider->SetOffset(Vector2(-50.0f, -50.0f));
 		cat->GetComponent<Transform>()->SetPos(Vector2(200.0f, 200.0f));
 		//cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
@@ -155,9 +161,11 @@ namespace so {
 	}
 	void PlayScene::OnEnter()
 	{
+		Scene::OnEnter();
 	}
 	void PlayScene::OnExit()
 	{
+		Scene::OnExit();
 		/*Transform* tr
 			= bg->GetComponent<Transform>();
 		tr->SetPos(Vector2(0, 0));*/

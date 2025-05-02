@@ -1,12 +1,13 @@
 #include "BoxCollider2D.h"
 #include "Transform.h"
 #include "GameObject.h"
-
+#include "Renderer.h"
+#include "Camera.h"
 
 namespace so
 {
 	BoxCollider2D::BoxCollider2D()
-		: Collider()
+		: Collider(enums::eColliderType::Rect2D)
 	{
 	}
 	BoxCollider2D::~BoxCollider2D()
@@ -25,7 +26,8 @@ namespace so
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = tr->GetPosition();
-
+		if (renderer::mainCamera)
+			pos = renderer::mainCamera->CaluatePosition(pos);
 		Vector2 offset = GetOffset();
 
 		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
@@ -36,8 +38,9 @@ namespace so
 
 		Rectangle(hdc, pos.x + offset.x
 			, pos.y + offset.y
-			, pos.x + offset.x + 100
-			, pos.y + offset.y + 100);
+			, pos.x + offset.x + 100 * GetSize().x
+			, pos.y + offset.y + 100 * GetSize().y);
+
 
 		SelectObject(hdc, oldBrush);
 		SelectObject(hdc, oldPen);

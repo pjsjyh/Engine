@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 namespace so {
+	using namespace enums;
 	class GameObject;
 	class Component: public Entity
 	{

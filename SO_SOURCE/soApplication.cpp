@@ -3,6 +3,7 @@
 #include "Time.h"
 #include "SceneManager.h"
 #include "Resources.h"
+#include "CollisionManager.h"
 namespace so {
 	Application::Application()
 		:mHwnd(nullptr),
@@ -23,7 +24,7 @@ namespace so {
 		
 		createBuffer(width, height);
 		initializeEtc();
-
+		CollisionManager::Initialize();
 		SceneManager::Initialize();
 
 
@@ -33,12 +34,13 @@ namespace so {
 
 		Input::Update();
 		Time::Update();
-
+		CollisionManager::Update();
 		SceneManager::Update();
 
 	}
 	void Application::LateUpdate()
 	{
+		CollisionManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 	void Application::Run()
@@ -53,7 +55,7 @@ namespace so {
 	{
 		clearRenderTarget();
 		Time::Render(mBackHdc);
-
+		CollisionManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 		//backbuffer에 있는걸 원본에 복사
 		copyRenderTarget(mBackHdc, mHdc);
