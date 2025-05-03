@@ -16,6 +16,8 @@ namespace so {
 
 		static Scene* LoadScene(const std::wstring& name);
 		static Scene* GetActiveScene() { return mActiveScene; }
+		static Scene* GetDontDestroyOnLoad() { return mDontDestroyOnLoad; }
+
 		static void Initialize();
 		static void Update();
 		static void LateUpdate();
@@ -34,6 +36,7 @@ namespace so {
 		//static std::vector<Scene*> mScene;
 		static Scene* mActiveScene;
 		static std::map<std::wstring, Scene*> mScene;
+		static Scene* mDontDestroyOnLoad;
 	};
 }
 

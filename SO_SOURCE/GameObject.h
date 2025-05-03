@@ -50,7 +50,7 @@ namespace so {
 
 			return component;
 		}
-		eState GetActive() { return mState; }
+		eState GetState() { return mState; }
 		void SetActive(bool power)
 		{
 			if (power == true) mState = eState::Active;
@@ -59,7 +59,9 @@ namespace so {
 		bool IsActive() { return mState == eState::Active; }
 
 		bool IsDead() { return mState == eState::Dead; }
-		
+		void SetLayerType(eLayerType layerType) { mLayerType = layerType; }
+		eLayerType GetLayerType() { return mLayerType; }
+
 	private:
 		void initializeTranform();
 		void death() { mState = eState::Dead; }
@@ -67,6 +69,7 @@ namespace so {
 	private:
 		std::vector<Component*> mComponents;
 		eState mState;
+		eLayerType mLayerType;
 	};
 }
 

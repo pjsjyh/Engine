@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Collider.h"
 #include "Transform.h"
+
 namespace so
 {
 
@@ -183,19 +184,34 @@ namespace so
 			|| (leftType == enums::eColliderType::Rect2D && rightType == enums::eColliderType::Circle2D))
 		{
 			// circle - rect
-			/*if (leftType == enums::eColliderType::Circle2D) {
-				Vector2 radius = leftSize / 2.0f;
-				Vector2 newLeftBox = rightPos - radius;
-			}
-			else if(rightType == enums::eColliderType::Circle2D){
-				Vector2 radius = rightSize / 2.0f;
-				Vector2 newLeftBox = leftPos - radius;
-				Vector2 newRightBox = leftPos + radius;
-				if (rightPos.x<newRightBox.x || rightPos.x>newLeftBox.x && rightPos.y<newRightBox.y || rightPos.y>newLeftBox.y) {
-					return true;
-				}
-			}*/
+			Vector2 circlePos, rectPos, rectSize;
+			float radius;
 
+			if (leftType == enums::eColliderType::Circle2D)
+			{
+				radius = leftSize.x / 2.0f;
+				circlePos = leftPos + Vector2(radius, radius);
+				rectPos = rightPos;
+				rectSize = rightSize;
+			}
+			else
+			{
+				radius = rightSize.x / 2.0f;
+				circlePos = rightPos + Vector2(radius, radius);
+				rectPos = leftPos;
+				rectSize = leftSize;
+			}
+
+			// 사각형을 radius만큼 확장
+			Vector2 expandedMin = rectPos - Vector2(radius, radius);
+			Vector2 expandedMax = rectPos + rectSize + Vector2(radius, radius);
+
+			// 원의 중심이 확장된 사각형 안에 있는지 확인
+			if (circlePos.x >= expandedMin.x && circlePos.x <= expandedMax.x &&
+				circlePos.y >= expandedMin.y && circlePos.y <= expandedMax.y)
+			{
+				return true;
+			}
 
 		}
 

@@ -1,8 +1,9 @@
 #include "SceneManager.h"
-
+#include "DontDestroyOnLoad.h"
 namespace so {
 	std::map<std::wstring, Scene*> SceneManager::mScene = {};
 	Scene* SceneManager::mActiveScene = nullptr;
+	Scene* SceneManager::mDontDestroyOnLoad = nullptr;
 	Scene* SceneManager::LoadScene(const std::wstring& name)
 	{
 		if (mActiveScene)
@@ -21,23 +22,26 @@ namespace so {
 	}
 	void so::SceneManager::Initialize()
 	{
-	
+		mDontDestroyOnLoad = CreateScene<DontDestroyOnLoad>(L"DontDestroyOnLoad");
 	}
 
 	void so::SceneManager::Update()
 	{
 		mActiveScene->Update();
+		mDontDestroyOnLoad->Update();
 	}
 
 	void so::SceneManager::LateUpdate()
 	{
 		mActiveScene->LateUpdate();
+		mDontDestroyOnLoad->LateUpdate();
 	}
 
 	void so::SceneManager::Render(HDC hdc)
 
 	{
 		mActiveScene->Render(hdc);
+		mDontDestroyOnLoad->Render(hdc);
 
 	}
 
@@ -53,6 +57,7 @@ namespace so {
 	void SceneManager::Destroy()
 	{
 		mActiveScene->Destroy();
+		mDontDestroyOnLoad->Destroy();
 	}
 
 }

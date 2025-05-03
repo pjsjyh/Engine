@@ -63,6 +63,8 @@ namespace so {
 		
 		
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
+		object::DontDestroyOnLoad(mPlayer);
+
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 		//BoxCollider2D* collider =  mPlayer->AddComponent<BoxCollider2D>();
 		CircleCollider2D* collider = mPlayer->AddComponent<CircleCollider2D>();
@@ -115,7 +117,7 @@ namespace so {
 		BoxCollider2D* boxCatCollider = cat->AddComponent<BoxCollider2D>();
 		//CircleCollider2D* boxCatCollider = cat->AddComponent<CircleCollider2D>();
 		boxCatCollider->SetOffset(Vector2(-50.0f, -50.0f));
-		cat->GetComponent<Transform>()->SetPos(Vector2(200.0f, 200.0f));
+		cat->GetComponent<Transform>()->SetPos(Vector2(100.0f, 100.0f));
 		//cat->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 
 		

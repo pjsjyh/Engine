@@ -71,6 +71,7 @@
       <Filter>Collider</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Object.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)soApplication.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CollisionManager.h">
       <Filter>Collider</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObject">
