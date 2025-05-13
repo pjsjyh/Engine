@@ -29,7 +29,7 @@ namespace so {
 		void Render(HDC hdc);
 
 
-		void CreateAnimation(const std::wstring& name, so::graphcis::Texture* spritesSheet, Vector2 leftTop, Vector2 size, Vector2 offset, UINT spriteLength, float duration);
+		void CreateAnimation(const std::wstring& name, so::graphics::Texture* spritesSheet, Vector2 leftTop, Vector2 size, Vector2 offset, UINT spriteLength, float duration);
 		void Reset();
 
 		bool IsComplete() { return mbComplete; }
@@ -37,7 +37,7 @@ namespace so {
 
 	private:
 		class Animator* mAnimator;
-		graphcis::Texture* mTexture;
+		graphics::Texture* mTexture;
 
 		std::vector<Sprite> mAnimationSheet;
 		int mIndex;

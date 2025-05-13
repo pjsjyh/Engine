@@ -4,11 +4,11 @@
 #include "Texture.h"
 namespace so
 {
-	class SpriteRenderer : public Component
+	class TilemapRenderer : public Component
 	{
 	public:
-		SpriteRenderer();
-		~SpriteRenderer();
+		TilemapRenderer();
+		~TilemapRenderer();
 
 		void Initialize() override;
 		void Update()  override;
@@ -17,9 +17,11 @@ namespace so
 
 		void SetTexture(graphics::Texture* texture) { mTexture = texture; }
 		void SetSize(math::Vector2 size) { mSize = size; }
-	private:
-		graphics::Texture* mTexture;
-		math::Vector2 mSize;
 
+	private:
+		Vector2 mTileSize;
+		graphics::Texture* mTexture;
+		Vector2 mSize;
+		Vector2 mIndex;
 	};
 }

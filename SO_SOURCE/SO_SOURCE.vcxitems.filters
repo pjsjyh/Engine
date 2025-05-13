@@ -72,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Object.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TilemapRenderer.cpp">
+      <Filter>Renderer\TileMapRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)soApplication.h" />
@@ -153,6 +156,9 @@
       <Filter>Collider</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)DontDestroyOnLoad.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TilemapRenderer.h">
+      <Filter>Renderer\TileMapRenderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObject">
@@ -202,6 +208,9 @@
     </Filter>
     <Filter Include="Collider">
       <UniqueIdentifier>{3d8b3776-4577-4a5d-985d-b9e88c2a8205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\TileMapRenderer">
+      <UniqueIdentifier>{a84520a7-f69b-41d0-aa64-c228ee9a6236}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

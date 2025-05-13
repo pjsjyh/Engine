@@ -50,7 +50,7 @@ namespace so {
 		if (mActiveAnimation)
 			mActiveAnimation->Render(hdc);
 	}
-	void Animator::CreateAnimation(const std::wstring& name, graphcis::Texture* spritesSheet, Vector2 leftTop, Vector2 size, Vector2 offset, UINT spriteLength, float duration)
+	void Animator::CreateAnimation(const std::wstring& name, graphics::Texture* spritesSheet, Vector2 leftTop, Vector2 size, Vector2 offset, UINT spriteLength, float duration)
 	{
 		Animation* animation = nullptr;
 		animation = FindAnimation(name);
@@ -77,13 +77,13 @@ namespace so {
 		//D:\JunJae\AR50\YamYam_Engine\Resources\Mushroom\1.bmp
 		int fileCount = 0;
 		std::filesystem::path fs(path);
-		std::vector<graphcis::Texture*> images = {};
+		std::vector<graphics::Texture*> images = {};
 		for (auto& p : std::filesystem::recursive_directory_iterator(fs))
 		{
 			std::wstring fileName = p.path().filename();
 			std::wstring fullName = p.path();
 
-			graphcis::Texture* texture = Resources::Load<graphcis::Texture>(fileName, fullName);
+			graphics::Texture* texture = Resources::Load<graphics::Texture>(fileName, fullName);
 			images.push_back(texture);
 			fileCount++;
 		}
@@ -91,7 +91,7 @@ namespace so {
 
 		UINT sheetWidth = images[0]->GetWidth() * fileCount;
 		UINT sheetHeight = images[0]->GetHeight();
-		graphcis::Texture* spriteSheet = graphcis::Texture::Create(name, sheetWidth, sheetHeight);
+		graphics::Texture* spriteSheet = graphics::Texture::Create(name, sheetWidth, sheetHeight);
 
 		UINT imageWidth = images[0]->GetWidth();
 		UINT imageHeight = images[0]->GetHeight();

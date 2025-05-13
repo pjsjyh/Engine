@@ -10,6 +10,7 @@ namespace so
 
 	std::bitset<(UINT)eLayerType::Max> CollisionManager::mCollisionLayerMatrix[(UINT)eLayerType::Max] = {};
 	std::unordered_map<UINT64, bool> CollisionManager::mCollisionMap = {};
+
 	void CollisionManager::Initialize()
 	{
 		int a = 1;
@@ -92,7 +93,6 @@ namespace so
 
 	void CollisionManager::ColliderCollision(Collider* left, Collider* right)
 	{
-		// 충돌체크로직을 작성해주면된다.
 		// 두 충돌체 번호로 가져온 ID 확인하여 CollisionID 세팅
 		CollisionID id = {};
 		id.left = left->GetID();

@@ -5,14 +5,14 @@
 extern so::Application app;
 
 namespace so {
-	namespace graphcis {
+	namespace graphics {
 		Texture::Texture()
 			: Resource(enums::eResourceType::Texture)
 			, mbAlpha(false)
 		{
 		}
 
-		so::graphcis::Texture::~Texture()
+		so::graphics::Texture::~Texture()
 		{
 		}
 		Texture* Texture::Create(const std::wstring& name, UINT width, UINT height)
@@ -45,7 +45,7 @@ namespace so {
 			return image;
 		}
 
-		HRESULT so::graphcis::Texture::Load(const std::wstring& path)
+		HRESULT so::graphics::Texture::Load(const std::wstring& path)
 		{
 
 			std::wstring ext

@@ -35,6 +35,12 @@
     <ClInclude Include="CatScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="ToolScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Content</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlayScene.cpp">
@@ -55,6 +61,12 @@
     </ClCompile>
     <ClCompile Include="CatScript.cpp">
       <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="ToolScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Content</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

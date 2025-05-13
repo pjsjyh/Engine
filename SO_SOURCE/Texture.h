@@ -1,7 +1,7 @@
 #pragma once
 #include "Resource.h"
 namespace so{
-	namespace graphcis {
+	namespace graphics {
 		
 			class Texture : public Resource
 			{

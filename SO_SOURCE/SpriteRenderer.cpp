@@ -41,13 +41,13 @@ namespace so
 
 		pos = renderer::mainCamera->CaluatePosition(pos);
 
-		if (mTexture->GetTextureType() == graphcis::Texture::eTextureType::Bmp) {
+		if (mTexture->GetTextureType() == graphics::Texture::eTextureType::Bmp) {
 			TransparentBlt(hdc, pos.x, pos.y
 				, mTexture->GetWidth() * mSize.x, mTexture->GetHeight() * mSize.y
 				, mTexture->GetHdc(), 0, 0, mTexture->GetWidth(), mTexture->GetHeight()
 				, RGB(255, 0, 255));
 		}
-		else if (mTexture->GetTextureType() == graphcis::Texture::eTextureType::Png) {
+		else if (mTexture->GetTextureType() == graphics::Texture::eTextureType::Png) {
 		/*	Gdiplus::Graphics graphcis(hdc);
 			graphcis.DrawImage(mTexture->GetImage(), Gdiplus::Rect(pos.x, pos.y, mTexture->GetWidth()*mSize.x, mTexture->GetHeight()*mSize.y));*/
 

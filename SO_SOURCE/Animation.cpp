@@ -55,12 +55,12 @@ namespace so {
 		if (renderer::mainCamera) {
 			pos = renderer::mainCamera->CaluatePosition(pos);
 		}
-		graphcis::Texture::eTextureType type = mTexture->GetTextureType();
+		graphics::Texture::eTextureType type = mTexture->GetTextureType();
 		Sprite sprite = mAnimationSheet[mIndex];
 
 
 
-		if (type == graphcis::Texture::eTextureType::Bmp) {
+		if (type == graphics::Texture::eTextureType::Bmp) {
 			HDC imgHdc = mTexture->GetHdc();
 
 			if (mTexture->IsAlpha())
@@ -98,7 +98,7 @@ namespace so {
 
 			Rectangle(hdc, pos.x, pos.y, pos.x + 10, pos.y + 10);
 		}
-		else if (type == graphcis::Texture::eTextureType::Png) {
+		else if (type == graphics::Texture::eTextureType::Png) {
 			//내가 원하는 픽셀을 투명화 시킬떄
 			Gdiplus::ImageAttributes imgAtt = {};
 
@@ -128,7 +128,7 @@ namespace so {
 		}
 	
 	}
-	void Animation::CreateAnimation(const std::wstring& name, graphcis::Texture* spritesSheet, Vector2 leftTop, Vector2 size, Vector2 offset, UINT spriteLength, float duration)
+	void Animation::CreateAnimation(const std::wstring& name, graphics::Texture* spritesSheet, Vector2 leftTop, Vector2 size, Vector2 offset, UINT spriteLength, float duration)
 	{
 		mTexture = spritesSheet;
 		for (size_t i = 0; i < spriteLength; i++) {

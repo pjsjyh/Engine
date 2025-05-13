@@ -62,7 +62,7 @@ namespace so {
 		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal/*, Vector2(100.0f, 100.0f)*/);
 		cat->AddComponent<CatScript>();
 
-		graphcis::Texture* catTex = Resources::Find<graphcis::Texture>(L"Cat");
+		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"Cat");
 		Animator* catAnimator = cat->AddComponent<Animator>();
 		catAnimator->CreateAnimation(L"DownWalk", catTex
 			, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.2f);

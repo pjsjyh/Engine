@@ -63,14 +63,14 @@ namespace so {
 		
 		
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
-		object::DontDestroyOnLoad(mPlayer);
+		//object::DontDestroyOnLoad(mPlayer);
 
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
-		//BoxCollider2D* collider =  mPlayer->AddComponent<BoxCollider2D>();
-		CircleCollider2D* collider = mPlayer->AddComponent<CircleCollider2D>();
+		BoxCollider2D* collider =  mPlayer->AddComponent<BoxCollider2D>();
+		//CircleCollider2D* collider = mPlayer->AddComponent<CircleCollider2D>();
 		collider->SetOffset(Vector2(-50.0f, -50.0f));
 
-		graphcis::Texture* playerTex =  Resources::Find<graphcis::Texture>(L"Player");
+		graphics::Texture* playerTex =  Resources::Find<graphics::Texture>(L"Player");
 		Animator* playAnimator = mPlayer->AddComponent<Animator>();
 		playAnimator->CreateAnimation(L"Idle", playerTex
 			, Vector2(2000.0f, 250.0f), Vector2(250.0f, 250.0f), Vector2::Zero, 1, 0.2f);
@@ -92,7 +92,7 @@ namespace so {
 
 		cat->AddComponent<CatScript>();
 		//cameraComp->SetTarget(cat);
-		graphcis::Texture* catTex = Resources::Find<graphcis::Texture>(L"Cat");
+		graphics::Texture* catTex = Resources::Find<graphics::Texture>(L"Cat");
 		Animator* catAnimator = cat->AddComponent<Animator>();
 		//catAnimator->CreateAnimation(L"DownWalk", catTex
 		//	, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f), Vector2::Zero, 4, 0.1f);
@@ -126,7 +126,7 @@ namespace so {
 		Player* background = object::Instantiate<Player>(enums::eLayerType::BackGround);
 		SpriteRenderer* sr
 			= background->AddComponent<SpriteRenderer>();
-		graphcis::Texture* bg = Resources::Find<graphcis::Texture>(L"Background");
+		graphics::Texture* bg = Resources::Find<graphics::Texture>(L"Background");
 		Transform* tr = background->GetComponent<Transform>();
 
 		bg->SetHeight(209.0f);
