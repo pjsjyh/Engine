@@ -23,26 +23,7 @@ namespace so {
 
     void so::Input::Update()
     {
-        for (size_t i = 0; i < Keys.size(); i++) {
-            if (GetAsyncKeyState(ASCII[i])&0x8000) {
-                if (Keys[i].bPressed == true) {
-                    Keys[i].state = eKeyState::Pressed;
-                }
-                else {
-                    Keys[i].state = eKeyState::Down;
-                }
-                Keys[i].bPressed = true;
-            }
-            else {
-                if (Keys[i].bPressed == true) {
-                    Keys[i].state = eKeyState::Up;
-                }
-                else {
-                    Keys[i].state = eKeyState::None;
-                }
-                Keys[i].bPressed = false;
-            }
-        }
+        updateKeys();
     }
 
     void so::Input::createKeys() {

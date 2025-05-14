@@ -1,4 +1,4 @@
-#pragma
+#pragma once
 #include "Resource.h"
 #include <cassert>
 namespace so
