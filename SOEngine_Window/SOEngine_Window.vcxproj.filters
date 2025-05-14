@@ -41,6 +41,7 @@
     <ClInclude Include="Tile.h">
       <Filter>Content</Filter>
     </ClInclude>
+    <ClInclude Include="CameraScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlayScene.cpp">
@@ -68,5 +69,6 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Content</Filter>
     </ClCompile>
+    <ClCompile Include="CameraScript.cpp" />
   </ItemGroup>
 </Project>

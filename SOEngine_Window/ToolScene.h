@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "Tile.h"
 namespace so
 {
 	class ToolScene : public Scene
@@ -15,7 +16,11 @@ namespace so
 
 		void OnEnter() override;
 		void OnExit()  override;
+		void Save();
+		void Load();
 
+	private:
+		std::vector<Tile*> mTiles;
 
 	};
 }

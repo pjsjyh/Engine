@@ -18,6 +18,8 @@ namespace so
 		void SetTexture(graphics::Texture* texture) { mTexture = texture; }
 		void SetSize(math::Vector2 size) { mSize = size; }
 		void SetIndex(Vector2 index) { mIndex = index; }
+		Vector2 GetIndex() { return mIndex; }
+	
 	public:
 		static Vector2 TileSize;
 		static Vector2 OriginTileSize;

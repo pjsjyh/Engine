@@ -15,6 +15,7 @@ namespace so {
 		void Render(HDC hdc) override;
 
 		void SetTarget(GameObject* target) { mTarget = target; };
+		Vector2 CaluateTilePosition(Vector2 pos) { return pos + mDistance; };
 	private:
 		//std::vector<GameObject*> mGameObjects;
 		class GameObject* mTarget;
