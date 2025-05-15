@@ -56,7 +56,10 @@ namespace so {
 			{
 				return Vector2(x + other.x, y + other.y);
 			}
-
+			Vector2 operator-()
+			{
+				return Vector2(-x, -y);
+			}
 
 			void operator+=(Vector2 other)
 			{
@@ -82,7 +85,10 @@ namespace so {
 			{
 				return Vector2(x * v.x, y * v.y);
 			}
-
+			bool operator==(Vector2 v)
+			{
+				return (x == v.x) && (y == v.y);
+			}
 			void clear()
 			{
 				x = 0.0f;

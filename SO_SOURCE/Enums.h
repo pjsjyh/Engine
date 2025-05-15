@@ -20,6 +20,7 @@ namespace so {
 		enum class  eComponentType {
 			Transform,
 			Colider,
+			Rigidbody,
 			Script,
 			SpriteRenderer,
 			Animator,

@@ -75,6 +75,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TilemapRenderer.cpp">
       <Filter>Renderer\TileMapRenderer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)RigidBody.cpp">
+      <Filter>RigidBody</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)soApplication.h" />
@@ -159,6 +162,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TilemapRenderer.h">
       <Filter>Renderer\TileMapRenderer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)RigidBody.h">
+      <Filter>RigidBody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="GameObject">
@@ -211,6 +217,9 @@
     </Filter>
     <Filter Include="Renderer\TileMapRenderer">
       <UniqueIdentifier>{a84520a7-f69b-41d0-aa64-c228ee9a6236}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RigidBody">
+      <UniqueIdentifier>{1f192289-bdd9-4234-b61b-dbc6509964b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

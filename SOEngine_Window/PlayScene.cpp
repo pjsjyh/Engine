@@ -19,6 +19,7 @@
 #include "CollisionManager.h"
 #include "Tile.h"
 #include "TilemapRenderer.h"
+#include "RigidBody.h"
 namespace so {
 
 	PlayScene::PlayScene()
@@ -85,6 +86,7 @@ namespace so {
 		mPlayer->GetComponent<Transform>()->SetPos(Vector2(300.0f, 250.0f));
 		//mPlayer->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
 		//mPlayer->GetComponent<Transform>()->SetRotation(0.0f);
+		mPlayer->AddComponent<Rigidbody>();
 
 		
 		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
