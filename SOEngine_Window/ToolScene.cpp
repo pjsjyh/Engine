@@ -203,7 +203,7 @@ namespace so
 			if (fread(&posY, sizeof(int), 1, pFile) == NULL)
 				break;
 
-			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile);
+			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile, Vector2(posX, posY));
 			TilemapRenderer* tmr = tile->AddComponent<TilemapRenderer>();
 			tmr->SetTexture(Resources::Find<graphics::Texture>(L"SpringFloor"));
 			tmr->SetIndex(Vector2(idxX, idxY));

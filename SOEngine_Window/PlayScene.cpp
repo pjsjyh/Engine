@@ -31,7 +31,7 @@ namespace so {
 	{
 		//게임오브젝트 만들기전에 리소스를 전부 Load해두면 좋다.
 		FILE* pFile = nullptr;
-		_wfopen_s(&pFile, L"..\\Resources\\Test", L"rb");
+		_wfopen_s(&pFile, L"..\\Resources\\saf", L"rb");
 
 		while (true)
 		{
