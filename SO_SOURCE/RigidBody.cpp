@@ -1,4 +1,4 @@
-#include "Rigidbody.h"
+ï»¿#include "Rigidbody.h"
 #include "Time.h"
 #include "Transform.h"
 #include "GameObject.h"
@@ -7,11 +7,13 @@ namespace so
 {
 	Rigidbody::Rigidbody()
 		: Component(enums::eComponentType::Rigidbody)
+		, mbGround(false)
 		, mMass(1.0f)
 		, mFriction(10.0f)
 		, mForce(Vector2::Zero)
 		, mVelocity(Vector2::Zero)
-		, mGravity(Vector2::Zero)
+		, mLimitedVelocity(Vector2(200.0f, 1000.0f))
+		, mGravity(Vector2(0.0f, 800.0f))
 		, mAccelation(Vector2::Zero)
 	{
 
@@ -27,23 +29,60 @@ namespace so
 
 	void Rigidbody::Update()
 	{
-		// f(Èû) = m(Áú·®) x a(°¡¼Óµµ)
+		// f(í˜) = m(ì§ˆëŸ‰) x a(ê°€ì†ë„)
 		// a = f / m;
 		mAccelation = mForce / mMass;
 
-		// ¼Óµµ¿¡ °¡¼Óµµ¸¦ ´õÇÑ´Ù.
+		// ì†ë„ì— ê°€ì†ë„ë¥¼ ë”í•œë‹¤.
 		mVelocity += mAccelation * Time::DeltaTime();
+
+		if (mbGround)
+		{
+			// ë•…ìœ„ì— ìˆì„ë•Œ
+			Vector2 gravity = mGravity;
+			gravity.normalize();
+
+			float dot = Vector2::Dot(mVelocity, gravity);
+			mVelocity -= gravity * dot;
+		}
+		else
+		{
+			// ê³µì¤‘ì— ìˆì„Â‹Âš
+			mVelocity += mGravity * Time::DeltaTime();
+		}
+
+
+		//ìµœëŒ€ ì†ë„ ì œí•œ
+		Vector2 gravity = mGravity;
+		gravity.normalize();
+		float dot = Vector2::Dot(mVelocity, gravity);
+		gravity = gravity * dot;
+
+		Vector2 sideVelocity = mVelocity - gravity;
+		if (mLimitedVelocity.y < gravity.length())
+		{
+			gravity.normalize();
+			gravity *= mLimitedVelocity.y;
+		}
+
+		if (mLimitedVelocity.x < sideVelocity.length())
+		{
+			sideVelocity.normalize();
+			sideVelocity *= mLimitedVelocity.x;
+		}
+		mVelocity = gravity + sideVelocity;
+
 
 		if (!(mVelocity == Vector2::Zero))
 		{
-			//¼Óµµ¿¡ ¹İ´ë¹æÇâÀ¸·Î ¸¶Âû·Â ÀÛ¿ë
+			//ì†ë„ì— ë°˜ëŒ€ë°©í–¥ìœ¼ë¡œ ë§ˆì°°ë ¥ ì‘ìš©
 			Vector2 friction = -mVelocity;
 			friction = friction.normalize() * mFriction * mMass * Time::DeltaTime();
 
-			// ¸¶Âû·ÂÀ¸·Î ÀÎÇÑ ¼Óµµ °¨¼Ò·®ÀÌ ÇöÀç ¼Óµµº¸´Ù Å« °æ¿ì
+			// ë§ˆì°°ë ¥ìœ¼ë¡œ ì¸í•œ ì†ë„ ê°ì†ŒëŸ‰ì´ í˜„ì¬ ì†ë„ë³´ë‹¤ í° ê²½ìš°
 			if (mVelocity.length() <= friction.length())
 			{
-				// ¸ØÃç
+				// ë©ˆì¶°
 				mVelocity = Vector2::Zero;
 			}
 			else

@@ -42,6 +42,10 @@
       <Filter>Content</Filter>
     </ClInclude>
     <ClInclude Include="CameraScript.h" />
+    <ClInclude Include="Floor.h" />
+    <ClInclude Include="FloorScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlayScene.cpp">
@@ -70,5 +74,9 @@
       <Filter>Content</Filter>
     </ClCompile>
     <ClCompile Include="CameraScript.cpp" />
+    <ClCompile Include="Floor.cpp" />
+    <ClCompile Include="FloorScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

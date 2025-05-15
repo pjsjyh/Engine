@@ -20,6 +20,9 @@
 #include "Tile.h"
 #include "TilemapRenderer.h"
 #include "RigidBody.h"
+
+#include "Floor.h"
+#include "FloorScript.h"
 namespace so {
 
 	PlayScene::PlayScene()
@@ -88,7 +91,14 @@ namespace so {
 		//mPlayer->GetComponent<Transform>()->SetRotation(0.0f);
 		mPlayer->AddComponent<Rigidbody>();
 
-		
+		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(100.0f, 600.0f));
+		floor->SetName(L"Floor");
+		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>();
+		floorCol->SetSize(Vector2(3.0f, 1.0f));
+		floor->AddComponent<FloorScript>();
+
+
+
 		Cat* cat = object::Instantiate<Cat>(enums::eLayerType::Animal);
 		//cat->SetActive(false);
 
@@ -166,6 +176,7 @@ namespace so {
 	void PlayScene::OnEnter()
 	{
 		Scene::OnEnter();
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
 	}
 	void PlayScene::OnExit()

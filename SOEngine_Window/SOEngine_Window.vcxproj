@@ -155,6 +155,8 @@
     <ClInclude Include="CameraScript.h" />
     <ClInclude Include="Cat.h" />
     <ClInclude Include="CatScript.h" />
+    <ClInclude Include="Floor.h" />
+    <ClInclude Include="FloorScript.h" />
     <ClInclude Include="LoadResources.h" />
     <ClInclude Include="LoadScene.h" />
     <ClInclude Include="Player.h" />
@@ -169,6 +171,8 @@
     <ClCompile Include="CameraScript.cpp" />
     <ClCompile Include="Cat.cpp" />
     <ClCompile Include="CatScript.cpp" />
+    <ClCompile Include="Floor.cpp" />
+    <ClCompile Include="FloorScript.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerScript.cpp" />
     <ClCompile Include="PlayScene.cpp" />

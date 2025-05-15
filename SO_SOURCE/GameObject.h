@@ -8,7 +8,7 @@ namespace so::object
 	void Destory(GameObject* gameObject);
 }
 namespace so {
-	class GameObject
+	class GameObject : public Entity
 	{
 	public:
 		friend void object::Destory(GameObject* obj);

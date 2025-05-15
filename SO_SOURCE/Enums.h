@@ -7,6 +7,7 @@ namespace so {
 			Tile,
 			Animal,
 			Player,
+			Floor,
 			Particle,
 			Max = 16,
 		};
