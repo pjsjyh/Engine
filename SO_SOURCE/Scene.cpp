@@ -1,5 +1,5 @@
 #include "Scene.h"
-
+#include "CollisionManager.h"
 namespace so {
 	so::Scene::Scene()
 		:mLayers{}
@@ -63,6 +63,7 @@ namespace so {
 	}
 	void Scene::OnExit()
 	{
+		CollisionManager::Clear();
 	}
 
 	void Scene::AddGameObject(GameObject* gameObj, const enums::eLayerType type)

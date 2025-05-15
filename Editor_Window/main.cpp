@@ -7,7 +7,7 @@
 
 #include "..\\SO_SOURCE\\Resources.h"
 #include "..\\SO_SOURCE\\Texture.h"
-
+#include "..\\SO_SOURCE\\SceneManager.h"
 
 #include "..\\SOEngine_Window\\LoadScene.h"
 #include "..\\SOEngine_Window\\LoadResources.h"
@@ -173,19 +173,26 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    int a = 0;
    srand((unsigned int)(&a));
 
-   //Tile윈도운 크기 조정
-   so::graphics::Texture* texture 
-       = so::Resources::Find<so::graphics::Texture>(L"SpringFloor");
+   so::Scene* activeScene = so::SceneManager::GetActiveScene();
 
-   RECT rect = { 0,0,texture->GetWidth(), texture->GetHeight() };
-   AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+   std::wstring name = activeScene->GetName();
+   if (name == L"ToolScene") {
+       //Tile윈도운 크기 조정
+       so::graphics::Texture* texture
+           = so::Resources::Find<so::graphics::Texture>(L"SpringFloor");
 
-   UINT toolWidth = rect.right - rect.left;
-   UINT toolHeight = rect.bottom - rect.top;
+       RECT rect = { 0,0,texture->GetWidth(), texture->GetHeight() };
+       AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
-   SetWindowPos(ToolhWnd, nullptr, 0, 0, toolWidth, toolHeight, 0);
-   ShowWindow(ToolhWnd, true);
-   UpdateWindow(ToolhWnd);
+       UINT toolWidth = rect.right - rect.left;
+       UINT toolHeight = rect.bottom - rect.top;
+
+       SetWindowPos(ToolhWnd, nullptr, 0, 0, toolWidth, toolHeight, 0);
+       ShowWindow(ToolhWnd, true);
+       UpdateWindow(ToolhWnd);
+   }
+
+ 
 
    return TRUE;
 }

@@ -41,6 +41,11 @@ namespace so
 	void CollisionManager::Render(HDC hdc)
 	{
 	}
+	void CollisionManager::Clear()
+	{
+		mCollisionMap.clear();
+		mCollisionLayerMatrix->reset();
+	}
 
 	void CollisionManager::CollisionLayerCheck(eLayerType left, eLayerType right, bool enable)
 	{
@@ -64,8 +69,8 @@ namespace so
 
 	void CollisionManager::LayerCollision(Scene* scene, eLayerType left, eLayerType right)
 	{
-		const std::vector<GameObject*>& lefts = scene->GetLayer(left)->GetGameObjects();
-		const std::vector<GameObject*>& rights = scene->GetLayer(right)->GetGameObjects();
+		const std::vector<GameObject*>& lefts = SceneManager::GetGameObjects(left);//scene->GetLayer(left)->GetGameObjects();
+		const std::vector<GameObject*>& rights = SceneManager::GetGameObjects(right); // scene->GetLayer(right)->GetGameObjects();
 
 		for (GameObject* left : lefts)
 		{

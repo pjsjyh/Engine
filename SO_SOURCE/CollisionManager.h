@@ -30,8 +30,10 @@ namespace so
 		static void LayerCollision(class Scene* scene, eLayerType left, eLayerType right);
 		static void ColliderCollision(Collider* left, Collider* right);
 		static bool Intersect(Collider* left, Collider* right);
+		static void Clear();
 	private:
 		static std::bitset<(UINT)eLayerType::Max> mCollisionLayerMatrix[(UINT)eLayerType::Max];
 		static std::unordered_map<UINT64, bool> mCollisionMap;
+
 	};
 }

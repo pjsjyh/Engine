@@ -30,36 +30,7 @@ namespace so {
 	void PlayScene::Initialize()
 	{
 		//게임오브젝트 만들기전에 리소스를 전부 Load해두면 좋다.
-		FILE* pFile = nullptr;
-		_wfopen_s(&pFile, L"..\\Resources\\saf", L"rb");
-
-		while (true)
-		{
-			int idxX = 0;
-			int idxY = 0;
-
-			int posX = 0;
-			int posY = 0;
-
-
-			if (fread(&idxX, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&idxY, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&posX, sizeof(int), 1, pFile) == NULL)
-				break;
-			if (fread(&posY, sizeof(int), 1, pFile) == NULL)
-				break;
-
-			Tile* tile = object::Instantiate<Tile>(eLayerType::Tile, Vector2(posX, posY));
-			TilemapRenderer* tmr = tile->AddComponent<TilemapRenderer>();
-			tmr->SetTexture(Resources::Find<graphics::Texture>(L"SpringFloor"));
-			tmr->SetIndex(Vector2(idxX, idxY));
-
-			//mTiles.push_back(tile);
-		}
-
-		fclose(pFile);
+		
 		{
 		/*	bg = new Player();
 			Transform* tr
@@ -83,8 +54,6 @@ namespace so {
 			//sr->ImageLoad(L"E:/study/c++study/SoEngine/Engine/Resources/CloudOcean.png");
 		}
 
-		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
-
 
 		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(522.0f, 225.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
@@ -94,7 +63,7 @@ namespace so {
 		
 		
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
-		//object::DontDestroyOnLoad(mPlayer);
+		object::DontDestroyOnLoad(mPlayer);
 
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 		BoxCollider2D* collider =  mPlayer->AddComponent<BoxCollider2D>();
@@ -195,6 +164,7 @@ namespace so {
 	void PlayScene::OnEnter()
 	{
 		Scene::OnEnter();
+		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
 	}
 	void PlayScene::OnExit()
 	{
