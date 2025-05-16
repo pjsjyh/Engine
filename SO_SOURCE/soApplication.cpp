@@ -4,6 +4,8 @@
 #include "SceneManager.h"
 #include "Resources.h"
 #include "CollisionManager.h"
+#include "UIManager.h"
+#include "Fmod.h"
 namespace so {
 	Application::Application()
 		:mHwnd(nullptr),
@@ -24,7 +26,10 @@ namespace so {
 		
 		createBuffer(width, height);
 		initializeEtc();
+
+		Fmod::Initialize();
 		CollisionManager::Initialize();
+		UIManager::Initialize();
 		SceneManager::Initialize();
 
 
@@ -35,12 +40,14 @@ namespace so {
 		Input::Update();
 		Time::Update();
 		CollisionManager::Update();
+		UIManager::Update();
 		SceneManager::Update();
 
 	}
 	void Application::LateUpdate()
 	{
 		CollisionManager::LateUpdate();
+		UIManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 	void Application::Run()
@@ -56,6 +63,7 @@ namespace so {
 		clearRenderTarget();
 		Time::Render(mBackHdc);
 		CollisionManager::Render(mBackHdc);
+		UIManager::Render(mBackHdc);
 		SceneManager::Render(mBackHdc);
 		//backbuffer에 있는걸 원본에 복사
 		copyRenderTarget(mBackHdc, mHdc);
@@ -63,6 +71,7 @@ namespace so {
 	void Application::Release()
 	{
 		SceneManager::Release();
+		UIManager::Release();
 		Resources::Release();
 	}
 	void Application::Destroy()

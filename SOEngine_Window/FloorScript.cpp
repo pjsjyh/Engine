@@ -8,7 +8,7 @@
 #include "Animator.h"
 #include "Object.h"
 #include "Rigidbody.h"
-
+#include "AudioSource.h"
 namespace so
 {
 	FloorScript::FloorScript()
@@ -54,7 +54,12 @@ namespace so
 
 			playerTr->SetPos(playerPos);
 		}
-
+		AudioSource* as = GetOwner()->GetComponent<AudioSource>();
+		//as->SetClip();
+		//as->SetLoop(true);
+	
+		// 
+		//as->Play();
 
 		playerRb->SetGround(true);
 	}

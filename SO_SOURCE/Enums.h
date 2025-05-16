@@ -26,6 +26,8 @@ namespace so {
 			SpriteRenderer,
 			Animator,
 			Camera,
+			AudioListener,
+			AudioSource,
 			End,
 		};
 		enum class eColliderType
@@ -36,6 +38,8 @@ namespace so {
 		};
 		enum class eUIType
 		{
+			HpBar,
+			Button,
 			End,
 		};
 	}

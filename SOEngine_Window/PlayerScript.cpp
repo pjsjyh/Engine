@@ -12,6 +12,7 @@
 #include "CatScript.h"
 #include "Object.h"
 #include "RigidBody.h"
+#include "UIManager.h"
 namespace so {
 	PlayerScript::PlayerScript()
 		: mState(PlayerScript::eState::Idle)
@@ -135,6 +136,18 @@ namespace so {
 		//	//pos.y += 100.0f * Time::DeltaTime();
 		//	rb->AddForce(Vector2(0.0f, -200.0f));
 		//}
+		if (Input::GetKeyDown(eKeyCode::I))
+		{
+			UIManager::Push(eUIType::HpBar);
+			//UIManager::Push(eUIType::Button);
+
+		}
+
+		if (Input::GetKeyDown(eKeyCode::O))
+		{
+			UIManager::Pop(eUIType::HpBar);
+
+		}
 	}
 	void PlayerScript::move()
 	{

@@ -97,6 +97,11 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PreBuildEvent>
+      <Command>copy "$(SolutionDir)External\Library\Fmod\Debug\fmodL.dll" "$(TargetDir)"
+copy "$(SolutionDir)External\Library\Fmod\Debug\fmodstudioL.dll" "$(TargetDir)"
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -116,6 +121,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PreBuildEvent>
+      <Command>copy "$(SolutionDir)External\Library\Fmod\Debug\fmodL.dll" "$(TargetDir)"
+copy "$(SolutionDir)External\Library\Fmod\Debug\fmodstudioL.dll" "$(TargetDir)"
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -131,6 +141,11 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PreBuildEvent>
+      <Command>copy "$(SolutionDir)External\Library\Fmod\Debug\fmodL.dll" "$(TargetDir)"
+copy "$(SolutionDir)External\Library\Fmod\Debug\fmodstudioL.dll" "$(TargetDir)"
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -150,6 +165,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PreBuildEvent>
+      <Command>copy "$(SolutionDir)External\Library\Fmod\Debug\fmodL.dll" "$(TargetDir)"
+copy "$(SolutionDir)External\Library\Fmod\Debug\fmodstudioL.dll" "$(TargetDir)"
+</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CameraScript.h" />

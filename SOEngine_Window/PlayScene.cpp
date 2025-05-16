@@ -23,6 +23,11 @@
 
 #include "Floor.h"
 #include "FloorScript.h"
+#include "UIManager.h"
+
+#include "AudioClip.h"
+#include "AudioListener.h"
+#include "AudioSource.h"
 namespace so {
 
 	PlayScene::PlayScene()
@@ -68,6 +73,7 @@ namespace so {
 		
 		mPlayer = object::Instantiate<Player>(enums::eLayerType::Player/*, Vector2(100.0f, 100.0f)*/);
 		object::DontDestroyOnLoad(mPlayer);
+		mPlayer->AddComponent<AudioListener>();
 
 		PlayerScript* plScript = mPlayer->AddComponent<PlayerScript>();
 		BoxCollider2D* collider =  mPlayer->AddComponent<BoxCollider2D>();
@@ -135,7 +141,7 @@ namespace so {
 		
 
 		///
-		Player* background = object::Instantiate<Player>(enums::eLayerType::BackGround);
+		/*Player* background = object::Instantiate<Player>(enums::eLayerType::BackGround);
 		SpriteRenderer* sr
 			= background->AddComponent<SpriteRenderer>();
 		graphics::Texture* bg = Resources::Find<graphics::Texture>(L"Background");
@@ -144,7 +150,7 @@ namespace so {
 		bg->SetHeight(209.0f);
 		bg->SetWidth(1032.0f);
 		sr->SetSize(Vector2(2.0f, 2.0f));
-		sr->SetTexture(bg);
+		sr->SetTexture(bg);*/
 		            
 
 
@@ -178,9 +184,11 @@ namespace so {
 		Scene::OnEnter();
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Floor, true);
 		CollisionManager::CollisionLayerCheck(eLayerType::Player, eLayerType::Animal, true);
+		UIManager::Push(eUIType::Button);
 	}
 	void PlayScene::OnExit()
 	{
+		UIManager::Pop(eUIType::Button);
 		Scene::OnExit();
 		/*Transform* tr
 			= bg->GetComponent<Transform>();
