@@ -1,5 +1,7 @@
 #pragma once
 #include "../SO_SOURCE//Script.h"
+#include "../SO_SOURCE//Texture.h"
+
 namespace so {
 	class PlayerScript:public Script
 	{
@@ -22,6 +24,7 @@ namespace so {
 		void OnCollisionStay(Collider* other) override;
 		void OnCollisionExit(Collider* other) override;
 
+		void SetPixelMapTexture(graphics::Texture* texture) { mPixelMap = texture; }
 
 		void AttackEffect();
 	private:
@@ -32,7 +35,7 @@ namespace so {
 		eState mState;
 		class Animator* mAnimator;
 
-
+		graphics::Texture* mPixelMap;
 		//void(*StartEvent)();
 		//void(*CompleteEvent)();
 		//void(*EndEvent)();

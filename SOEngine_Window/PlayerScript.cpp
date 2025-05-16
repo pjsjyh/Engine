@@ -27,27 +27,47 @@ namespace so {
 	}
 	void PlayerScript::Update()
 	{
-		if (mAnimator == nullptr) {
+		if (mAnimator == nullptr)
+		{
 			mAnimator = GetOwner()->GetComponent<Animator>();
 		}
+
 		switch (mState)
 		{
-		case PlayerScript::eState::Idle:
+		case so::PlayerScript::eState::Idle:
 			idle();
 			break;
-		case PlayerScript::eState::Walk:
+		case so::PlayerScript::eState::Walk:
 			move();
 			break;
 
-		case PlayerScript::eState::Sleep:
+		case so::PlayerScript::eState::Sleep:
 			break;
-		case PlayerScript::eState::GiveWater:
+		case so::PlayerScript::eState::GiveWater:
 			giveWater();
 			break;
-		case PlayerScript::eState::Attack:
+
+		case so::PlayerScript::eState::Attack:
 			break;
 		default:
 			break;
+		}
+
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector2 pos = tr->GetPosition();
+		COLORREF color = mPixelMap->GetPixel(pos.x, pos.y + 50);
+
+		Rigidbody* playerRb = GetOwner()->GetComponent<Rigidbody>();
+		if (color == RGB(255, 0, 0))
+		{
+			playerRb->SetGround(true);
+
+			pos.y -= 1;
+			tr->SetPos(pos);
+		}
+		else
+		{
+			playerRb->SetGround(false);
 		}
 
 

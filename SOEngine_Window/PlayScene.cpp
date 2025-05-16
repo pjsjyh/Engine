@@ -64,7 +64,7 @@ namespace so {
 		}
 
 
-		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(522.0f, 225.0f));
+		GameObject* camera = object::Instantiate<GameObject>(enums::eLayerType::Particle, Vector2(336.0f, 423.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		//camera->AddComponent<PlayerScript>();
 		renderer::mainCamera = cameraComp;
@@ -97,11 +97,24 @@ namespace so {
 		//mPlayer->GetComponent<Transform>()->SetRotation(0.0f);
 		mPlayer->AddComponent<Rigidbody>();
 
-		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(100.0f, 600.0f));
+
+		Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(0.0f, 0.0f));
+		floor->SetName(L"Floor");
+		
+		SpriteRenderer* floorSR = floor->AddComponent<SpriteRenderer>();
+		floorSR->SetTexture(Resources::Find<graphics::Texture>(L"PixelMap"));
+
+		AudioSource* as = floor->AddComponent<AudioSource>();
+
+		plScript->SetPixelMapTexture(Resources::Find<graphics::Texture>(L"PixelMap"));
+
+		/*Floor* floor = object::Instantiate<Floor>(eLayerType::Floor, Vector2(100.0f, 600.0f));
 		floor->SetName(L"Floor");
 		BoxCollider2D* floorCol = floor->AddComponent<BoxCollider2D>();
 		floorCol->SetSize(Vector2(3.0f, 1.0f));
 		floor->AddComponent<FloorScript>();
+
+		AudioSource* as = floor->AddComponent<AudioSource>();*/
 
 
 
@@ -153,7 +166,9 @@ namespace so {
 		sr->SetTexture(bg);*/
 		            
 
-
+		AudioClip* ac = Resources::Load<AudioClip>(L"BGSound", L"..\\Resources\\Sound\\smw_bonus_game_end.wav");
+		as->SetClip(ac);
+		//as->Play();
 
 		///
 
