@@ -8,6 +8,8 @@
 #include <map>
 #include <bitset>
 #include <functional>
+#include <stack>
+#include <queue>
 //FILESYSTEM을 넣으면 CTIME에서 오류발생
 //아직까지 원인불명상태
 //임의로 재정의 해서 실행되도록만 해둠 추후수정필요
